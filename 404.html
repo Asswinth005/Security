@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, viewport-fit=cover">
+    <title>Sentinel | Page Not Found</title>
+    <!-- Sentinel Favicon - Magnifying Glass & Shield -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231E2A36'/%3E%3Cpath fill='%23D4AF37' d='M50 25 L70 40 L70 60 L50 75 L30 60 L30 40 Z'/%3E%3Ccircle cx='50' cy='50' r='12' fill='none' stroke='%23D4AF37' stroke-width='3'/%3E%3Cpath fill='%23D4AF37' d='M60 58 L68 66 L65 69 L57 61 Z'/%3E%3C/svg%3E">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#0A1928',
+                        'secondary-charcoal': '#1E2A36',
+                        'accent-gold': '#D4AF37',
+                        'accent-gold-dark': '#B4942C',
+                        'neutral-dark': '#0F1A24',
+                        'neutral-light': '#F5F7FA',
+                        'dark-bg': '#0A0F15',
+                        'dark-card': '#16212B'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Lexend', 'Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.4s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(30px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #F5F7FA;
+            color: #1E2A36;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dark body {
+            background-color: #0A0F15;
+            color: #E5E7EB;
+        }
+        
+        /* Theme toggle buttons */
+        .theme-toggle-wrapper {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .toggle-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(30, 42, 54, 0.8);
+            backdrop-filter: blur(8px);
+            color: #D4AF37;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .dark .toggle-btn {
+            background: rgba(22, 33, 43, 0.9);
+            color: #D4AF37;
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        
+        .toggle-btn:hover {
+            background: #D4AF37;
+            color: #0A1928;
+            border-color: #D4AF37;
+            transform: translateY(-2px);
+        }
+        
+        .toggle-btn.active {
+            background: #D4AF37;
+            color: #0A1928;
+            border-color: #D4AF37;
+        }
+        
+        /* Button Styles */
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #B4942C 100%);
+            color: #0A1928;
+            font-weight: 600;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(212, 175, 55, 0.35);
+        }
+        
+        .btn-outline-gold {
+            background: transparent;
+            border: 1.5px solid #D4AF37;
+            color: #D4AF37;
+            font-weight: 600;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .dark .btn-outline-gold {
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+        
+        .btn-outline-gold:hover {
+            background: #D4AF37;
+            color: #0A1928;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.25);
+        }
+        
+        /* Logo animation */
+        .logo-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        a:hover .logo-icon {
+            transform: rotate(12deg);
+        }
+        
+        /* Error number style - FIXED visibility */
+        .error-number {
+            font-size: 8rem;
+            font-weight: 800;
+            font-family: 'Lexend', 'Inter', sans-serif;
+            line-height: 1.2;
+            color: #0A1928;
+            letter-spacing: -0.02em;
+            display: inline-block;
+        }
+        
+        .dark .error-number {
+            color: #E5E7EB;
+        }
+        
+        /* Shield icon styling - FIXED positioning */
+        .shield-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .shield-icon {
+            font-size: 7rem;
+            color: #D4AF37;
+            animation: float 6s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @media (min-width: 768px) {
+            .error-number {
+                font-size: 10rem;
+            }
+            .shield-icon {
+                font-size: 9rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .error-number {
+                font-size: 12rem;
+            }
+            .shield-icon {
+                font-size: 11rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .error-number {
+                font-size: 4rem;
+            }
+            .shield-icon {
+                font-size: 3.5rem;
+            }
+        }
+        
+        /* Animation */
+       @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+        
+        /* RTL adjustments */
+        [dir="rtl"] .fa-arrow-right {
+            transform: scaleX(-1);
+        }
+        
+        [dir="rtl"] .theme-toggle-wrapper {
+            right: auto;
+            left: 24px;
+        }
+        
+        /* Hidden utility */
+        .hidden {
+            display: none;
+        }
+        
+        /* Page container */
+        .page-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+        
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: #D4AF37;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            .theme-toggle-wrapper {
+                top: 12px;
+                right: 12px;
+            }
+            
+            [dir="rtl"] .theme-toggle-wrapper {
+                left: 12px;
+                right: auto;
+            }
+            
+            .toggle-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            
+            .btn-gold, .btn-outline-gold {
+                padding: 0.7rem 1.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-neutral-light dark:bg-dark-bg">
+
+    <!-- Theme Toggle Buttons - Top Right -->
+    <div class="theme-toggle-wrapper">
+        <button id="theme-toggle" class="toggle-btn" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun hidden"></i>
+        </button>
+        <button id="rtl-toggle" class="toggle-btn" title="Toggle RTL/LTR">
+            ⇄
+        </button>
+    </div>
+
+    <!-- ===== SIMPLE NAVIGATION BAR ===== -->
+    <nav class="flex-shrink-0 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-md border-b border-neutral-light dark:border-gray-800">
+        <div class="page-container">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo - redirects to index.html -->
+                <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse group">
+                    <div class="logo-icon w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+                        <i class="fas fa-user-secret text-primary-navy text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-display font-bold tracking-tight text-neutral-dark dark:text-white">SENTINEL</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN 404 CONTENT ===== -->
+    <main class="flex-1 flex items-center justify-center py-12 md:py-16">
+        <div class="page-container">
+            <div class="max-w-4xl mx-auto">
+                
+                <!-- 404 Visual Section - FIXED: All numbers visible -->
+                <div class="text-center animate-fade-in">
+                    
+                    <!-- Large 404 with Shield Icon - Proper alignment -->
+                    <div class="flex items-center justify-center gap-2 md:gap-6 mb-8">
+                        <span class="error-number">4</span>
+                                               <span class="error-number">0</span>
+
+                        <span class="error-number">4</span>
+                    </div>
+                    
+                    <!-- Error Badge -->
+                    <div class="inline-flex items-center px-4 py-2 bg-accent-gold/10 dark:bg-accent-gold/20 rounded-full mb-6">
+                        <i class="fas fa-exclamation-triangle text-accent-gold mr-2 text-sm"></i>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-accent-gold">Error 404 · Restricted Access</span>
+                    </div>
+                    
+                    <!-- Main Heading -->
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-neutral-dark dark:text-white mb-4">
+                        Page Not Found
+                    </h1>
+                    
+                    <!-- Description -->
+                    <p class="text-neutral-dark/80 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                        The page you're trying to access doesn't exist or has been moved. 
+                        Our security protocols suggest returning to a verified location.
+                    </p>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                        <a href="index.html" class="btn-gold w-full sm:w-auto px-8">
+                            <i class="fas fa-home mr-2 rtl:ml-2 rtl:mr-0"></i>
+                            Return to Home
+                        </a>
+                        <a href="service.html" class="btn-outline-gold w-full sm:w-auto px-8 group">
+                            <i class="fas fa-shield-alt mr-2 rtl:ml-2 rtl:mr-0"></i>
+                            Our Services
+                            <i class="fas fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Helpful Links Section -->
+                    <div class="relative py-8">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-neutral-light dark:border-gray-700"></div>
+                        </div>
+                        <div class="relative flex justify-center">
+                            <span class="bg-neutral-light dark:bg-dark-bg px-6 text-sm text-neutral-dark/70 dark:text-gray-400">
+                                quick navigation
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Popular Pages Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                        <a href="about.html" class="group p-4 rounded-2xl hover:bg-white/60 dark:hover:bg-dark-card/60 transition-all duration-300">
+                            <div class="w-12 h-12 bg-accent-gold/10 dark:bg-accent-gold/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-info-circle text-accent-gold"></i>
+                            </div>
+                            <span class="text-xs font-medium text-neutral-dark dark:text-gray-300">About Us</span>
+                        </a>
+                        <a href="service.html" class="group p-4 rounded-2xl hover:bg-white/60 dark:hover:bg-dark-card/60 transition-all duration-300">
+                            <div class="w-12 h-12 bg-accent-gold/10 dark:bg-accent-gold/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-handcuffs text-accent-gold"></i>
+                            </div>
+                            <span class="text-xs font-medium text-neutral-dark dark:text-gray-300">Services</span>
+                        </a>
+                        <a href="gallery.html" class="group p-4 rounded-2xl hover:bg-white/60 dark:hover:bg-dark-card/60 transition-all duration-300">
+                            <div class="w-12 h-12 bg-accent-gold/10 dark:bg-accent-gold/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-folder-open text-accent-gold"></i>
+                            </div>
+                            <span class="text-xs font-medium text-neutral-dark dark:text-gray-300">Case Studies</span>
+                        </a>
+                        <a href="contact.html" class="group p-4 rounded-2xl hover:bg-white/60 dark:hover:bg-dark-card/60 transition-all duration-300">
+                            <div class="w-12 h-12 bg-accent-gold/10 dark:bg-accent-gold/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-envelope text-accent-gold"></i>
+                            </div>
+                            <span class="text-xs font-medium text-neutral-dark dark:text-gray-300">Contact</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Back to Home Link (mobile friendly) -->
+                    <div class="mt-10 md:hidden">
+                        <a href="index.html" class="text-accent-gold hover:text-accent-gold-dark font-medium text-sm inline-flex items-center">
+                            <i class="fas fa-arrow-left mr-2 rtl:ml-2 rtl:mr-0"></i>
+                            Return to homepage
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="flex-shrink-0 py-6 bg-white/50 dark:bg-dark-bg/50 backdrop-blur-sm border-t border-neutral-light dark:border-gray-800">
+        <div class="page-container">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4 text-xs text-neutral-dark/70 dark:text-gray-400">
+                    <span>© 2026 Sentinel Intel</span>
+                    <span>·</span>
+                    <a href="#" class="hover:text-accent-gold dark:hover:text-accent-gold transition">Privacy Policy</a>
+                    <span>·</span>
+                    <a href="#" class="hover:text-accent-gold dark:hover:text-accent-gold transition">Terms of Service</a>
+                </div>
+                <div class="flex items-center space-x-4 text-xs">
+                    <span class="text-neutral-dark/60 dark:text-gray-500">Need assistance?</span>
+                    <a href="contact.html" class="text-accent-gold hover:text-accent-gold-dark font-medium">Contact Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== DARK / LIGHT + RTL TOGGLE SCRIPT ===== -->
+    <script>
+        (function() {
+            // ---------- THEME ----------
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIconMoon = themeToggle?.querySelector('.fa-moon');
+            const themeIconSun = themeToggle?.querySelector('.fa-sun');
+
+            function setTheme(isDark) {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    if (themeIconMoon) themeIconMoon.classList.add('hidden');
+                    if (themeIconSun) themeIconSun.classList.remove('hidden');
+                    themeToggle?.classList.add('active');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    if (themeIconMoon) themeIconMoon.classList.remove('hidden');
+                    if (themeIconSun) themeIconSun.classList.add('hidden');
+                    themeToggle?.classList.remove('active');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+            
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                setTheme(true);
+            } else if (savedTheme === 'light') {
+                setTheme(false);
+            } else {
+                setTheme(false);
+            }
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setTheme(!document.documentElement.classList.contains('dark'));
+                });
+            }
+
+            // ---------- RTL ----------
+            const rtlBtn = document.getElementById('rtl-toggle');
+            
+            function setRTL(isRTL) {
+                if (isRTL) {
+                    document.documentElement.dir = 'rtl';
+                    document.documentElement.lang = 'ar';
+                    rtlBtn?.classList.add('active');
+                    localStorage.setItem('dir', 'rtl');
+                } else {
+                    document.documentElement.dir = 'ltr';
+                    document.documentElement.lang = 'en';
+                    rtlBtn?.classList.remove('active');
+                    localStorage.setItem('dir', 'ltr');
+                }
+            }
+            
+            const savedDir = localStorage.getItem('dir');
+            if (savedDir === 'rtl') {
+                setRTL(true);
+            } else {
+                setRTL(false);
+            }
+
+            if (rtlBtn) {
+                rtlBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setRTL(document.documentElement.dir !== 'rtl');
+                });
+            }
+
+            // ---------- DEMO ALERTS (only for placeholder links) ----------
+            document.querySelectorAll('footer a[href="#"]').forEach(link => {
+                link.addEventListener('click', (e) => { 
+                    e.preventDefault(); 
+                    alert('📜 Sentinel Terms & Privacy information would be displayed here.'); 
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

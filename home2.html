@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel | Intelligence & Risk Management</title>
+    <!-- Custom Favicon - Magnifying Glass & Shield -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231E2A36'/%3E%3Cpath fill='%23D4AF37' d='M50 25 L70 40 L70 60 L50 75 L30 60 L30 40 Z'/%3E%3Ccircle cx='50' cy='50' r='12' fill='none' stroke='%23D4AF37' stroke-width='3'/%3E%3Cpath fill='%23D4AF37' d='M60 58 L68 66 L65 69 L57 61 Z'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKzSURBVHgB7Zs9bxNBFIafIYICgUKCkAJKFAmJFoGElIYv0SAlgvIHSGmhoUChpEGIhg6B+AM0NCkNFaKjQHQgmgpEhwgKkEgRYmd37/WO7Zkdr73r80hX8tqesT2zu/fuzM4KIYQQQgghhBBCCCGE+B9gMBgM8mY0Gn3m9XmeP+e1WZY9A1D4wV+7rrvFq0uSpKo+CILRZrMp+P0cFotFkCRJAr9PUf9qNPj/XgBZln0Abpmm+TYIgjslCzBZlmXghyVJcg+4XqIAg8Gg4KZpmq+CIHhQkgCj0ajgpmn6wTTNZyUIMBgMCm4YhmHb9tMSBOj1egU3DENP07ynBwRgj0FZliUwDONuGIa3db5BZzMyTfMqTdMbYRje0fEGtm3HpmlehmF4S8cbmKZZWJZ1qesNLMtKLMu6qusNhHd1vYHwrq438P0UA4YMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZBb5BzIYQQQgghhBBCCCGE+Ce8B45LZfyqQz1SAAAAAElFTkSuQmCC">
+    <meta name="description" content="Advanced threat intelligence, corporate risk management, and private security consulting. Strategic protection for high-stakes environments.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#0A1928',
+                        'secondary-charcoal': '#1E2A36',
+                        'accent-gold': '#D4AF37',
+                        'accent-gold-dark': '#B4942C',
+                        'neutral-dark': '#0F1A24',
+                        'neutral-light': '#F5F7FA',
+                        'dark-bg': '#0A0F15',
+                        'dark-card': '#16212B'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Lexend', 'Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-right': 'slideRight 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-30px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    },
+                    backgroundImage: {
+                        'security-pattern': "radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%)",
+                        'hero-pattern-alt': "url('https://images.unsplash.com/photo-1506399558188-acca6f8cbf41?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom Styles - same theme as reference */
+        body {
+            background-color: #F5F7FA;
+            color: #1E2A36;
+            scroll-behavior: smooth;
+        }
+        
+        .dark body {
+            background-color: #0A0F15;
+            color: #E5E7EB;
+        }
+        
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #E5E7EB;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        
+        /* Feature Card - Different design for home 2 */
+        .feature-card-alt {
+            background: white;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .feature-card-alt {
+            background: #16212B;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+        
+        .feature-card-alt:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 24px 40px -16px rgba(212, 175, 55, 0.25);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Capability Card */
+        .capability-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        
+        .dark .capability-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%);
+        }
+        
+        .capability-card:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.06) 100%);
+            transform: translateX(8px);
+        }
+        
+        /* Button Styles - matching theme */
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #B4942C 100%);
+            color: #0A1928;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+        }
+        
+        .btn-outline-gold {
+            border: 1.5px solid #D4AF37;
+            color: #D4AF37;
+            background: transparent;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .btn-outline-gold:hover {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        
+        /* Navigation styles - IDENTICAL to reference */
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #E5E7EB;
+        }
+        
+        .dark .dropdown-menu {
+            background: #16212B;
+            border-color: #2D3A46;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: #1E2A36;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .dark .dropdown-item {
+            color: #E5E7EB;
+        }
+        
+        .dropdown-item:hover {
+            background: #F3F4F6;
+            color: #D4AF37;
+            padding-left: 1.75rem;
+        }
+        
+        .auth-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        
+        .auth-btn.login {
+            background: transparent;
+            border-color: #D1D5DB;
+            color: #1E2A36;
+        }
+        
+        .dark .auth-btn.login {
+            border-color: #4B5563;
+            color: #D1D5DB;
+        }
+        
+        .auth-btn.login:hover {
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+        
+        .auth-btn.signup {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        
+        .toggle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F3F4F6;
+            color: #6B7280;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dark .toggle-btn {
+            background: #2D3A46;
+            color: #9CA3AF;
+        }
+        
+        .toggle-btn:hover {
+            background: #E5E7EB;
+            color: #D4AF37;
+        }
+        
+        /* Mobile Menu - NO SCROLLBAR */
+        .mobile-menu {
+            background: white;
+            border-top: 1px solid #E5E5E5;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .dark .mobile-menu {
+            background: #0A0F15;
+            border-color: #2D3A46;
+        }
+        
+        .mobile-menu.open {
+            max-height: 85vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .mobile-menu.open::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .mobile-menu-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            color: #1E2A36;
+            border-bottom: 1px solid #F3F4F6;
+            transition: all 0.2s ease;
+        }
+        
+        .dark .mobile-menu-item {
+            color: #D1D5DB;
+            border-bottom-color: #2D3A46;
+        }
+        
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .mobile-dropdown-content.show {
+            max-height: 300px;
+        }
+        
+        .mobile-dropdown-item {
+            display: block;
+            padding: 0.75rem 2.5rem;
+            font-size: 0.95rem;
+            color: #6B7280;
+            transition: all 0.2s ease;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #F3F4F6;
+            color: #1E2A36;
+            transition: all 0.3s ease;
+        }
+        
+        .dark .social-icon {
+            background: #2D3A46;
+            color: #E5E7EB;
+        }
+        
+        .social-icon:hover {
+            background: #D4AF37;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .dashboard-dropdown {
+            position: relative;
+        }
+        
+        .dashboard-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #E5E7EB;
+        }
+        
+        .dark .dashboard-dropdown-menu {
+            background: #16212B;
+            border-color: #2D3A46;
+        }
+        
+        .dashboard-dropdown:hover .dashboard-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .desktop-nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-spacing {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        /* Hero Overlay - Fixed for light mode visibility */
+        .hero-overlay-light {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(245,247,250,0.92) 100%);
+        }
+        
+        .dark .hero-overlay-light {
+            background: linear-gradient(135deg, rgba(10,25,40,0.92) 0%, rgba(30,42,54,0.88) 100%);
+        }
+        
+        /* Stats Counter Style */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #D4AF37, #B4942C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        [dir="rtl"] .nav-spacing {
+            flex-direction: row-reverse;
+        }
+    </style>
+</head>
+<body class="security-pattern">
+
+    <!-- Fixed Navigation - EXACT COPY from reference -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-md border-b border-neutral-light dark:border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a class='flex items-center space-x-3 group' href='index.html'>
+                    <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+                        <i class="fas fa-user-secret text-primary-navy text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-display font-bold tracking-tight text-neutral-dark dark:text-white">SENTINEL</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden xl:flex items-center">
+                    <div class="desktop-nav-container">
+                        <div class="nav-spacing">
+                            <div class="dropdown">
+                                <button class="nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition flex items-center" style="color:#D4AF37; font-weight:600;">
+                                    Home <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class='dropdown-item' href='index.html'><i class="fas fa-home"></i> Home 1</a>
+                                    <a href="home2.html" class="dropdown-item" style="background: rgba(212, 175, 55, 0.1); color: #D4AF37; border-left: 3px solid #D4AF37; font-weight: 600;"><i class="fas fa-home"></i> Home 2</a>
+                                </div>
+                            </div>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='about.html'>About</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='service.html'>Services</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='consult.html'>Consult</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='cases.html'>Cases</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='contact.html'>Contact</a>
+                            <div class="dashboard-dropdown">
+                                <button class="nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition flex items-center">
+                                    Dashboard <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                                </button>
+                                <div class="dashboard-dropdown-menu">
+                                    <a class='dropdown-item' href='admin.html'><i class="fas fa-user-shield"></i> Admin</a>
+                                    <a class='dropdown-item' href='client.html'><i class="fas fa-user"></i> Client</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <a class='auth-btn login' href='login.html'>Login</a>
+                            <a class='auth-btn signup' href='signup.html'>Sign Up</a>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 ml-4">
+                        <button id="theme-toggle" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                        <button id="rtl-toggle" class="toggle-btn">⇄</button>
+                    </div>
+                </div>
+
+                <button id="mobile-toggle" class="xl:hidden text-neutral-dark dark:text-gray-300 p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu xl:hidden">
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item"><span>Home</span><i class="fas fa-chevron-down text-xs"></i></button>
+                    <div class="mobile-dropdown-content">
+                        <a class='mobile-dropdown-item' href='index.html'>Home 1</a>
+                        <a class='mobile-dropdown-item' href='home2.html' style="background: rgba(212, 175, 55, 0.1); color: #D4AF37;">Home 2</a>
+                    </div>
+                </div>
+                <a class='mobile-menu-item' href='about.html'>About</a>
+                <a class='mobile-menu-item' href='service.html'>Services</a>
+                <a class='mobile-menu-item' href='consult.html'>Consult</a>
+                <a class='mobile-menu-item' href='cases.html'>Cases</a>
+                <a class='mobile-menu-item' href='contact.html'>Contact</a>
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item"><span>Dashboard</span><i class="fas fa-chevron-down text-xs"></i></button>
+                    <div class="mobile-dropdown-content">
+                        <a class='mobile-dropdown-item' href='admin.html'>Admin</a>
+                        <a class='mobile-dropdown-item' href='client.html'>Client</a>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 p-6">
+                    <a class='mobile-auth-btn login flex-1 text-center' href='login.html'>Login</a>
+                    <a class='mobile-auth-btn signup flex-1 text-center' href='signup.html'>Sign Up</a>
+                </div>
+                <div class="flex justify-center gap-3 p-6 border-t border-gray-200 dark:border-gray-800">
+                    <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                    <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION - FIXED VISIBILITY IN LIGHT MODE -->
+    <section class="relative min-h-screen pt-32 pb-20 md:pt-40 md:pb-24 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506399558188-acca6f8cbf41?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+        <!-- Overlay that works for both light and dark mode -->
+        <div class="absolute inset-0 hero-overlay-light"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-right">
+                    <div class="inline-flex items-center px-4 py-2 bg-accent-gold/20 backdrop-blur-sm rounded-full mb-6 border border-accent-gold/30">
+                        <i class="fas fa-chart-line mr-2 text-accent-gold"></i>
+                        <span class="font-medium text-sm text-neutral-dark dark:text-white">INTELLIGENCE-LED PROTECTION</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 text-neutral-dark dark:text-white">
+                        Strategic <span class="text-accent-gold">Risk Intelligence</span><br>
+                        & Threat Mitigation
+                    </h1>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+                        Advanced threat detection, predictive analytics, and comprehensive security architecture for organizations navigating high-stakes environments.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="btn-gold px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2"><i class="fas fa-chart-simple"></i> Risk Assessment</a>
+                        <a href="#" class="btn-outline-gold px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2"><i class="fas fa-headset"></i> 24/7 Intelligence Desk</a>
+                    </div>
+                   
+                </div>
+                <div class="relative animate-fade-in">
+                    <div class="absolute -inset-4 bg-accent-gold/20 blur-3xl rounded-full"></div>
+                    <div class="relative bg-white/95 dark:bg-dark-card/95 backdrop-blur-sm rounded-2xl p-6 border border-accent-gold/20 shadow-xl">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-dark-card rounded-xl border border-gray-100 dark:border-gray-700">
+                                <i class="fas fa-shield-haltered text-accent-gold text-2xl"></i>
+                                <div><p class="font-bold text-neutral-dark dark:text-white">Real-time Threat Monitoring</p><p class="text-sm text-gray-600 dark:text-gray-400">Active intelligence feeds from global networks</p></div>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-dark-card rounded-xl border border-gray-100 dark:border-gray-700">
+                                <i class="fas fa-microchip text-accent-gold text-2xl"></i>
+                                <div><p class="font-bold text-neutral-dark dark:text-white">Predictive Risk Analytics</p><p class="text-sm text-gray-600 dark:text-gray-400">AI-driven threat forecasting & vulnerability mapping</p></div>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-dark-card rounded-xl border border-gray-100 dark:border-gray-700">
+                                <i class="fas fa-globe text-accent-gold text-2xl"></i>
+                                <div><p class="font-bold text-neutral-dark dark:text-white">Global Operations Network</p><p class="text-sm text-gray-600 dark:text-gray-400">Field agents in 45+ jurisdictions</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPABILITIES SECTION - New design: Grid of capabilities with icons -->
+    <section class="py-24 bg-neutral-light dark:bg-dark-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent-gold font-semibold uppercase tracking-wide text-sm">Core Capabilities</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 dark:text-white">Operational Excellence Across Domains</h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-4">Integrated security solutions combining human intelligence, technical surveillance, and strategic consulting</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="capability-card p-6 text-center"><div class="w-16 h-16 bg-accent-gold/15 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-eye text-accent-gold text-2xl"></i></div><h3 class="font-bold text-lg mb-2 dark:text-white">Covert Surveillance</h3><p class="text-sm text-gray-600 dark:text-gray-400">Advanced technical & physical surveillance operations</p></div>
+                <div class="capability-card p-6 text-center"><div class="w-16 h-16 bg-accent-gold/15 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-fingerprint text-accent-gold text-2xl"></i></div><h3 class="font-bold text-lg mb-2 dark:text-white">Digital Forensics</h3><p class="text-sm text-gray-600 dark:text-gray-400">Cyber investigation & encrypted data recovery</p></div>
+                <div class="capability-card p-6 text-center"><div class="w-16 h-16 bg-accent-gold/15 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-people-arrows text-accent-gold text-2xl"></i></div><h3 class="font-bold text-lg mb-2 dark:text-white">Crisis Negotiation</h3><p class="text-sm text-gray-600 dark:text-gray-400">Hostile situation management & resolution</p></div>
+                <div class="capability-card p-6 text-center"><div class="w-16 h-16 bg-accent-gold/15 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-chart-line text-accent-gold text-2xl"></i></div><h3 class="font-bold text-lg mb-2 dark:text-white">Risk Intelligence</h3><p class="text-sm text-gray-600 dark:text-gray-400">Geopolitical & corporate threat analysis</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE SHOWCASE - Different layout: Alternating rows -->
+    <section class="py-24 bg-white dark:bg-dark-card">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                <div class="order-2 lg:order-1"><img src="https://images.unsplash.com/photo-1573164574230-db1d5e960238?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Security Operations" class="rounded-2xl shadow-2xl w-full"></div>
+                <div class="order-1 lg:order-2"><span class="text-accent-gold font-semibold text-sm uppercase tracking-wide">Proactive Defense</span><h3 class="text-3xl font-display font-bold mt-2 dark:text-white">Intelligence-Driven Security Posture</h3><p class="text-gray-600 dark:text-gray-300 mt-4 mb-6">Our approach combines human intelligence networks with cutting-edge technology to identify threats before they materialize.</p><ul class="space-y-3"><li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent-gold"></i><span class="dark:text-gray-300">Predictive threat modeling</span></li><li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent-gold"></i><span class="dark:text-gray-300">Dark web monitoring & exposure assessment</span></li><li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent-gold"></i><span class="dark:text-gray-300">Insider threat detection programs</span></li></ul></div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div><span class="text-accent-gold font-semibold text-sm uppercase tracking-wide">Rapid Response</span><h3 class="text-3xl font-display font-bold mt-2 dark:text-white">24/7 Global Crisis Management</h3><p class="text-gray-600 dark:text-gray-300 mt-4 mb-6">Dedicated response teams ready for deployment anywhere in the world within hours. From executive protection to incident investigation.</p><a href="#" class="btn-outline-gold inline-flex items-center gap-2 px-6 py-2.5 rounded-full">Deployment capabilities →</a></div>
+                <div><img src="https://images.unsplash.com/photo-1557425955-df376b5903c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rapid Response" class="rounded-2xl shadow-2xl w-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRY FOCUS - New section -->
+    <section class="py-24 bg-neutral-light dark:bg-dark-bg">
+        <div class="container mx-auto px-6 text-center">
+            <span class="text-accent-gold font-semibold uppercase tracking-wide">Sector Expertise</span>
+            <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 dark:text-white">Specialized Industry Solutions</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+                <div class="feature-card-alt p-5 text-center"><i class="fas fa-chart-line text-accent-gold text-3xl mb-3"></i><h4 class="font-bold dark:text-white">Financial Services</h4><p class="text-sm text-gray-600 dark:text-gray-400">Fraud investigation & regulatory compliance</p></div>
+                <div class="feature-card-alt p-5 text-center"><i class="fas fa-microchip text-accent-gold text-3xl mb-3"></i><h4 class="font-bold dark:text-white">Tech & IP Protection</h4><p class="text-sm text-gray-600 dark:text-gray-400">Trade secret & industrial espionage defense</p></div>
+                <div class="feature-card-alt p-5 text-center"><i class="fas fa-gavel text-accent-gold text-3xl mb-3"></i><h4 class="font-bold dark:text-white">Legal & Litigation</h4><p class="text-sm text-gray-600 dark:text-gray-400">Evidence gathering & witness protection</p></div>
+                <div class="feature-card-alt p-5 text-center"><i class="fas fa-oil-can text-accent-gold text-3xl mb-3"></i><h4 class="font-bold dark:text-white">Energy & Infrastructure</h4><p class="text-sm text-gray-600 dark:text-gray-400">Asset security & supply chain integrity</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS - Fresh layout -->
+    <section class="py-24 bg-white dark:bg-dark-card">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12"><h2 class="text-3xl font-display font-bold dark:text-white">Trusted by Global Leaders</h2><p class="text-gray-600 dark:text-gray-300">Real results from real clients</p></div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-neutral-light dark:bg-dark-bg p-6 rounded-2xl"><i class="fas fa-quote-left text-accent-gold text-2xl mb-3"></i><p class="mb-4 dark:text-gray-300">"Sentinel's threat intelligence team identified a sophisticated intrusion attempt before any data breach occurred."</p><p class="font-bold dark:text-white">— CISO, Global Bank</p></div>
+                <div class="bg-neutral-light dark:bg-dark-bg p-6 rounded-2xl"><i class="fas fa-quote-left text-accent-gold text-2xl mb-3"></i><p class="mb-4 dark:text-gray-300">"Executive protection during our overseas expansion was flawless. Highly professional and discreet."</p><p class="font-bold dark:text-white">— CEO, Fortune 100</p></div>
+                <div class="bg-neutral-light dark:bg-dark-bg p-6 rounded-2xl"><i class="fas fa-quote-left text-accent-gold text-2xl mb-3"></i><p class="mb-4 dark:text-gray-300">"The digital forensics team uncovered critical evidence that was instrumental in our litigation case."</p><p class="font-bold dark:text-white">— Legal Counsel, Tech Corp</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA - Full width with different style -->
+    <section class="py-20 bg-gradient-to-r from-primary-navy to-secondary-charcoal text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Ready to Fortify Your Security Posture?</h2>
+            <p class="text-gray-200 max-w-2xl mx-auto mb-8">Schedule a confidential consultation with our intelligence team.</p>
+            <a href="#" class="btn-gold inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-lg"><i class="fas fa-lock"></i> Secure Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer - EXACT COPY from reference -->
+    <footer class="py-16 bg-neutral-light dark:bg-dark-bg">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center"><i class="fas fa-user-secret text-primary-navy text-lg"></i></div>
+                        <div><span class="text-2xl font-display font-bold tracking-tight text-neutral-dark dark:text-white">SENTINEL</span></div>
+                    </div>
+                    <p class="mb-6 opacity-80 dark:opacity-70">Elite private investigation and security consulting. Discretion, precision, and results.</p>
+                    <div class="flex space-x-4 justify-center md:justify-start"><a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon"><i class="fab fa-twitter"></i></a><a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon"><i class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Quick Links</h3><ul class="space-y-3"><li><a class='hover:text-accent-gold transition block' href='index.html'>Home</a></li><li><a class='hover:text-accent-gold transition block' href='about.html'>About</a></li><li><a class='hover:text-accent-gold transition block' href='service.html'>Services</a></li><li><a class='hover:text-accent-gold transition block' href='consult.html'>Consult</a></li><li><a class='hover:text-accent-gold transition block' href='contact.html'>Contact</a></li></ul></div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Investigations</h3><ul class="space-y-3"><li><a href="#" class="hover:text-accent-gold transition block">Corporate Fraud</a></li><li><a href="#" class="hover:text-accent-gold transition block">Surveillance</a></li><li><a href="#" class="hover:text-accent-gold transition block">Digital Forensics</a></li><li><a href="#" class="hover:text-accent-gold transition block">Background Checks</a></li><li><a href="#" class="hover:text-accent-gold transition block">Asset Tracing</a></li></ul></div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Contact</h3><ul class="space-y-4"><li class="flex items-start justify-center md:justify-start"><i class="fas fa-map-marker-alt text-accent-gold mt-1 mr-3"></i><span>777 5th Ave, New York, NY</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-phone text-accent-gold mr-3"></i><span>+1 (212) 555-7890</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-envelope text-accent-gold mr-3"></i><span>contact@sentinel.com</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-clock text-accent-gold mr-3"></i><span>24/7 Emergency</span></li></ul></div>
+            </div>
+            <div class="mt-12 pt-8 border-t text-center border-neutral-light dark:border-gray-800"><p class="text-sm opacity-75 dark:opacity-70">&copy; 2026 SENTINEL. All rights reserved. <i class="fas fa-heart text-accent-gold mx-1"></i> Private Investigation & Security.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileThemeToggle = document.getElementById('theme-toggle-mobile');
+            function toggleTheme() {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                [themeToggle, mobileThemeToggle].forEach(btn => {
+                    if(btn) {
+                        const moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
+                        if(isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); btn.classList.add('active'); }
+                        else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); btn.classList.remove('active'); }
+                    }
+                });
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+            if (localStorage.getItem('theme') === 'dark') { document.documentElement.classList.add('dark'); [themeToggle, mobileThemeToggle].forEach(btn => { if(btn) { btn.querySelector('.fa-moon')?.classList.add('hidden'); btn.querySelector('.fa-sun')?.classList.remove('hidden'); btn.classList.add('active'); } }); }
+            
+            const rtlToggle = document.getElementById('rtl-toggle'), mobileRtlToggle = document.getElementById('rtl-toggle-mobile');
+            function toggleRTL() { document.documentElement.dir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl'; localStorage.setItem('dir', document.documentElement.dir); }
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+            if (localStorage.getItem('dir') === 'rtl') document.documentElement.dir = 'rtl';
+            
+            const mobileToggle = document.getElementById('mobile-toggle'), mobileMenu = document.getElementById('mobile-menu'), icon = document.querySelector('#mobile-toggle i');
+            if (mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('open');
+                    if (mobileMenu.classList.contains('open')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); document.body.style.overflow = 'hidden'; }
+                    else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); document.body.style.overflow = ''; document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('show')); }
+                });
+            }
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = btn.closest('.mobile-dropdown'), content = dropdown.querySelector('.mobile-dropdown-content'), icon = dropdown.querySelector('.fa-chevron-down');
+                    content.classList.toggle('show');
+                    icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    if (content.classList.contains('show')) document.querySelectorAll('.mobile-dropdown-content').forEach(c => { if (c !== content) c.classList.remove('show'); });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

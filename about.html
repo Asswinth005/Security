@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Sentinel - Elite Private Investigation & Security</title>
+    <!-- Custom Favicon - Magnifying Glass & Shield -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231E2A36'/%3E%3Cpath fill='%23D4AF37' d='M50 25 L70 40 L70 60 L50 75 L30 60 L30 40 Z'/%3E%3Ccircle cx='50' cy='50' r='12' fill='none' stroke='%23D4AF37' stroke-width='3'/%3E%3Cpath fill='%23D4AF37' d='M60 58 L68 66 L65 69 L57 61 Z'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKzSURBVHgB7Zs9bxNBFIafIYICgUKCkAJKFAmJFoGElIYv0SAlgvIHSGmhoUChpEGIhg6B+AM0NCkNFaKjQHQgmgpEhwgKkEgRYmd37/WO7Zkdr73r80hX8tqesT2zu/fuzM4KIYQQQgghhBBCCCGE+B9gMBgM8mY0Gn3m9XmeP+e1WZY9A1D4wV+7rrvFq0uSpKo+CILRZrMp+P0cFotFkCRJAr9PUf9qNPj/XgBZln0Abpmm+TYIgjslCzBZlmXghyVJcg+4XqIAg8Gg4KZpmq+CIHhQkgCj0ajgpmn6wTTNZyUIMBgMCm4YhmHb9tMSBOj1egU3DENP07ynBwRgj0FZliUwDONuGIa3db5BZzMyTfMqTdMbYRje0fEGtm3HpmlehmF4S8cbmKZZWJZ1qesNLMtKLMu6qusNhHd1vYHwrq438P0UA4YMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZByJAhw6A3yHkOQoYMg5AhQ4ZBb5BzIYQQQgghhBBCCCGE+Ce8B45LZfyqQz1SAAAAAElFTkSuQmCC">
+    <meta name="description" content="Learn about Sentinel Intel - a premier private investigation and security consulting firm with decades of combined experience in law enforcement, military intelligence, and corporate security.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#0A1928',
+                        'secondary-charcoal': '#1E2A36',
+                        'accent-gold': '#D4AF37',
+                        'accent-gold-dark': '#B4942C',
+                        'neutral-dark': '#0F1A24',
+                        'neutral-light': '#F5F7FA',
+                        'dark-bg': '#0A0F15',
+                        'dark-card': '#16212B'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Lexend', 'Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'scale-in': 'scaleIn 0.4s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.95)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #F5F7FA;
+            color: #1E2A36;
+            scroll-behavior: smooth;
+        }
+        
+        .dark body {
+            background-color: #0A0F15;
+            color: #E5E7EB;
+        }
+        
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #E5E7EB;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        
+        /* Navigation styles - IDENTICAL to reference */
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #E5E7EB;
+        }
+        
+        .dark .dropdown-menu {
+            background: #16212B;
+            border-color: #2D3A46;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: #1E2A36;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .dark .dropdown-item {
+            color: #E5E7EB;
+        }
+        
+        .dropdown-item:hover {
+            background: #F3F4F6;
+            color: #D4AF37;
+            padding-left: 1.75rem;
+        }
+        
+        .dropdown-item i {
+            margin-right: 0.75rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .auth-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        
+        .auth-btn.login {
+            background: transparent;
+            border-color: #D1D5DB;
+            color: #1E2A36;
+        }
+        
+        .dark .auth-btn.login {
+            border-color: #4B5563;
+            color: #D1D5DB;
+        }
+        
+        .auth-btn.login:hover {
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+        
+        .auth-btn.signup {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        
+        .auth-btn.signup:hover {
+            background: #B4942C;
+            transform: translateY(-2px);
+        }
+        
+        .toggle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F3F4F6;
+            color: #6B7280;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dark .toggle-btn {
+            background: #2D3A46;
+            color: #9CA3AF;
+        }
+        
+        .toggle-btn:hover {
+            background: #E5E7EB;
+            color: #D4AF37;
+        }
+        
+        .toggle-btn.active {
+            background: #D4AF37;
+            color: white;
+        }
+        
+        /* Mobile Menu - NO SCROLLBAR */
+        .mobile-menu {
+            background: white;
+            border-top: 1px solid #E5E5E5;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .dark .mobile-menu {
+            background: #0A0F15;
+            border-color: #2D3A46;
+        }
+        
+        .mobile-menu.open {
+            max-height: 85vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .mobile-menu.open::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .mobile-menu-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            color: #1E2A36;
+            border-bottom: 1px solid #F3F4F6;
+            transition: all 0.2s ease;
+        }
+        
+        .dark .mobile-menu-item {
+            color: #D1D5DB;
+            border-bottom-color: #2D3A46;
+        }
+        
+        .mobile-menu-item:hover {
+            background-color: #F9FAFB;
+            color: #D4AF37;
+        }
+        
+        .mobile-auth-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 0.25rem;
+            border: 1px solid transparent;
+        }
+        
+        .mobile-auth-btn.login {
+            background: transparent;
+            border-color: #D1D5DB;
+            color: #1E2A36;
+        }
+        
+        .dark .mobile-auth-btn.login {
+            border-color: #4B5563;
+            color: #D1D5DB;
+        }
+        
+        .mobile-auth-btn.login:hover {
+            background-color: #D4AF37;
+            color: white;
+            border-color: #D4AF37;
+        }
+        
+        .mobile-auth-btn.signup {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .mobile-dropdown-content.show {
+            max-height: 300px;
+        }
+        
+        .mobile-dropdown-item {
+            display: block;
+            padding: 0.75rem 2.5rem;
+            font-size: 0.95rem;
+            color: #6B7280;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #F9FAFB;
+        }
+        
+        .dark .mobile-dropdown-item {
+            color: #9CA3AF;
+            border-bottom-color: #2D3A46;
+        }
+        
+        .mobile-dropdown-item:hover {
+            color: #D4AF37;
+            background-color: #F9FAFB;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #F3F4F6;
+            color: #1E2A36;
+            transition: all 0.3s ease;
+        }
+        
+        .dark .social-icon {
+            background: #2D3A46;
+            color: #E5E7EB;
+        }
+        
+        .social-icon:hover {
+            background: #D4AF37;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .dashboard-dropdown {
+            position: relative;
+        }
+        
+        .dashboard-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #E5E7EB;
+        }
+        
+        .dark .dashboard-dropdown-menu {
+            background: #16212B;
+            border-color: #2D3A46;
+        }
+        
+        .dashboard-dropdown:hover .dashboard-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .desktop-nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-spacing {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        [dir="rtl"] .nav-spacing {
+            flex-direction: row-reverse;
+        }
+        
+        /* About Page Specific Styles */
+        .about-hero {
+            background: linear-gradient(135deg, #0A1928 0%, #1E2A36 100%), url('https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .dark .about-hero {
+            background: linear-gradient(135deg, #0A0F15 0%, #16212B 100%), url('https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-blend-mode: overlay;
+            background-size: cover;
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        
+        .dark .value-card {
+            background: #16212B;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -12px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid #D4AF37;
+            transition: all 0.3s ease;
+        }
+        
+        .dark .timeline-item {
+            border-left-color: #D4AF37;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(8px);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #D4AF37;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark .team-card {
+            background: #16212B;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Navigation - EXACT COPY from reference -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-md border-b border-neutral-light dark:border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a class='flex items-center space-x-3 group' href='index.html'>
+                    <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+                        <i class="fas fa-user-secret text-primary-navy text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-display font-bold tracking-tight text-neutral-dark dark:text-white">SENTINEL</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden xl:flex items-center">
+                    <div class="desktop-nav-container">
+                        <div class="nav-spacing">
+                            <div class="dropdown">
+                                <button class="nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition flex items-center">
+                                    Home <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class='dropdown-item' href='index.html'><i class="fas fa-home"></i> Home 1</a>
+                                    <a href="home2.html" class="dropdown-item"><i class="fas fa-home"></i> Home 2</a>
+                                </div>
+                            </div>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='about.html' style="color:#D4AF37; font-weight:600;">About</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='service.html'>Services</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='consult.html'>Consult</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='cases.html'>Cases</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='contact.html'>Contact</a>
+                            <div class="dashboard-dropdown">
+                                <button class="nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition flex items-center">
+                                    Dashboard <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                                </button>
+                                <div class="dashboard-dropdown-menu">
+                                    <a class='dropdown-item' href='admin.html'><i class="fas fa-user-shield"></i> Admin</a>
+                                    <a class='dropdown-item' href='client.html'><i class="fas fa-user"></i> Client</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <a class='auth-btn login' href='login.html'>Login</a>
+                            <a class='auth-btn signup' href='signup.html'>Sign Up</a>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 ml-4">
+                        <button id="theme-toggle" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                        <button id="rtl-toggle" class="toggle-btn">⇄</button>
+                    </div>
+                </div>
+
+                <button id="mobile-toggle" class="xl:hidden text-neutral-dark dark:text-gray-300 p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu xl:hidden">
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item"><span>Home</span><i class="fas fa-chevron-down text-xs"></i></button>
+                    <div class="mobile-dropdown-content">
+                        <a class='mobile-dropdown-item' href='index.html'>Home 1</a>
+                        <a class='mobile-dropdown-item' href='home2.html'>Home 2</a>
+                    </div>
+                </div>
+                <a class='mobile-menu-item' href='about.html' style="background: rgba(212, 175, 55, 0.1); color: #D4AF37;">About</a>
+                <a class='mobile-menu-item' href='service.html'>Services</a>
+                <a class='mobile-menu-item' href='consult.html'>Consult</a>
+                <a class='mobile-menu-item' href='cases.html'>Cases</a>
+                <a class='mobile-menu-item' href='contact.html'>Contact</a>
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item"><span>Dashboard</span><i class="fas fa-chevron-down text-xs"></i></button>
+                    <div class="mobile-dropdown-content">
+                        <a class='mobile-dropdown-item' href='admin.html'>Admin</a>
+                        <a class='mobile-dropdown-item' href='client.html'>Client</a>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 p-6">
+                    <a class='mobile-auth-btn login flex-1 text-center' href='login.html'>Login</a>
+                    <a class='mobile-auth-btn signup flex-1 text-center' href='signup.html'>Sign Up</a>
+                </div>
+                <div class="flex justify-center gap-3 p-6 border-t border-gray-200 dark:border-gray-800">
+                    <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                    <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section - Different Design -->
+    <section class="about-hero relative pt-32 pb-20 md:pt-40 md:pb-28">
+        <div class="absolute inset-0 bg-black/50 dark:bg-black/60"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center animate-slide-up">
+                <div class="inline-flex items-center px-4 py-2 bg-accent-gold/20 backdrop-blur-sm rounded-full mb-6 border border-accent-gold/30">
+                    <i class="fas fa-shield-alt mr-2 text-accent-gold"></i>
+                    <span class="font-medium text-white">EST. 2010</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6">
+                    Excellence in <span class="text-accent-gold">Discretion</span><br>
+                    & Precision
+                </h1>
+                <p class="text-lg text-gray-200 max-w-2xl mx-auto">
+                    For over a decade, Sentinel Intel has been the trusted partner for corporations, legal firms, and private clients seeking uncompromising investigative and security solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section - Split Layout -->
+    <section class="py-24 bg-white dark:bg-dark-card">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in">
+                    <span class="text-accent-gold font-semibold uppercase tracking-wide text-sm">Our Mission</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 dark:text-white">Protecting What Matters Most</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                        To deliver unparalleled investigative and security services with absolute integrity, discretion, and precision. We exist to provide clarity in complex situations, protection in vulnerable moments, and resolution when it matters most.
+                    </p>
+                    <div class="mt-8 p-6 bg-neutral-light dark:bg-dark-bg rounded-2xl border-l-4 border-accent-gold">
+                        <p class="text-gray-700 dark:text-gray-300 italic">"Our commitment is to truth, justice, and the unwavering protection of our clients' interests."</p>
+                        <p class="mt-3 font-semibold text-accent-gold">— Sentinel Intel Leadership</p>
+                    </div>
+                </div>
+                <div class="animate-scale-in">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-accent-gold/20 blur-2xl rounded-3xl"></div>
+                        <img src="https://images.unsplash.com/photo-1557425955-df376b5903c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mission" class="relative rounded-2xl shadow-2xl w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section - 4 Cards -->
+    <section class="py-24 bg-neutral-light dark:bg-dark-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent-gold font-semibold uppercase tracking-wide text-sm">Our Principles</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 dark:text-white">Core Values That Define Us</h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-4">The foundation of every investigation, every security plan, and every client relationship</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="value-card p-8 text-center">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-gavel text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">Integrity</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Unwavering ethical standards in every case, every decision</p>
+                </div>
+                <div class="value-card p-8 text-center">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-eye-slash text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">Discretion</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Absolute confidentiality guaranteed for all clients</p>
+                </div>
+                <div class="value-card p-8 text-center">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-chart-line text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">Excellence</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Forensic precision and relentless pursuit of truth</p>
+                </div>
+                <div class="value-card p-8 text-center">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-handshake text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">Trust</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Built through decades of proven results</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section - Numbers That Matter -->
+    <section class="py-20 bg-gradient-to-r from-primary-navy to-secondary-charcoal text-white">
+        <div class="container mx-auto px-6">
+            <div class="stats-grid">
+                <div class="text-center"><div class="text-4xl md:text-5xl font-bold text-accent-gold">15+</div><p class="mt-2 text-sm uppercase tracking-wide">Years of Excellence</p></div>
+                <div class="text-center"><div class="text-4xl md:text-5xl font-bold text-accent-gold">500+</div><p class="mt-2 text-sm uppercase tracking-wide">Successful Cases</p></div>
+                <div class="text-center"><div class="text-4xl md:text-5xl font-bold text-accent-gold">45+</div><p class="mt-2 text-sm uppercase tracking-wide">Global Locations</p></div>
+                <div class="text-center"><div class="text-4xl md:text-5xl font-bold text-accent-gold">100%</div><p class="mt-2 text-sm uppercase tracking-wide">Confidentiality</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Timeline -->
+    <section class="py-24 bg-white dark:bg-dark-card">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent-gold font-semibold uppercase tracking-wide text-sm">Our Journey</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 dark:text-white">Building a Legacy of Trust</h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="timeline-item"><h3 class="text-xl font-bold dark:text-white">2010</h3><p class="text-gray-600 dark:text-gray-400 mt-1">Founded by former intelligence officers and law enforcement veterans</p></div>
+                <div class="timeline-item"><h3 class="text-xl font-bold dark:text-white">2014</h3><p class="text-gray-600 dark:text-gray-400 mt-1">Expanded operations to international markets, establishing global presence</p></div>
+                <div class="timeline-item"><h3 class="text-xl font-bold dark:text-white">2018</h3><p class="text-gray-600 dark:text-gray-400 mt-1">Launched digital forensics division, becoming a leader in cyber investigations</p></div>
+                <div class="timeline-item"><h3 class="text-xl font-bold dark:text-white">2022</h3><p class="text-gray-600 dark:text-gray-400 mt-1">Recognized as top 10 security consulting firms by industry association</p></div>
+                <div class="timeline-item"><h3 class="text-xl font-bold dark:text-white">2026</h3><p class="text-gray-600 dark:text-gray-400 mt-1">Continuing to set new standards in investigative excellence</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team Section - 4 Team Members -->
+    <section class="py-24 bg-neutral-light dark:bg-dark-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent-gold font-semibold uppercase tracking-wide text-sm">Leadership</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 dark:text-white">Meet Our Experts</h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-4">Decades of combined experience in intelligence, law enforcement, and corporate security</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="team-card text-center"><div class="h-64 overflow-hidden"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Team Member" class="w-full h-full object-cover"></div><div class="p-6"><h3 class="text-xl font-bold dark:text-white">Michael Reynolds</h3><p class="text-accent-gold text-sm mb-2">Founder & CEO</p><p class="text-gray-600 dark:text-gray-400 text-sm">Former CIA Intelligence Officer, 20+ years experience</p></div></div>
+                <div class="team-card text-center"><div class="h-64 overflow-hidden"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Team Member" class="w-full h-full object-cover"></div><div class="p-6"><h3 class="text-xl font-bold dark:text-white">Sarah Chen</h3><p class="text-accent-gold text-sm mb-2">Director of Operations</p><p class="text-gray-600 dark:text-gray-400 text-sm">Former FBI Special Agent, Counterintelligence Expert</p></div></div>
+                <div class="team-card text-center"><div class="h-64 overflow-hidden"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Team Member" class="w-full h-full object-cover"></div><div class="p-6"><h3 class="text-xl font-bold dark:text-white">James O'Connor</h3><p class="text-accent-gold text-sm mb-2">Chief Security Consultant</p><p class="text-gray-600 dark:text-gray-400 text-sm">Military Intelligence, Executive Protection Specialist</p></div></div>
+                <div class="team-card text-center"><div class="h-64 overflow-hidden"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Team Member" class="w-full h-full object-cover"></div><div class="p-6"><h3 class="text-xl font-bold dark:text-white">Elena Vasquez</h3><p class="text-accent-gold text-sm mb-2">Digital Forensics Lead</p><p class="text-gray-600 dark:text-gray-400 text-sm">Cybersecurity Expert, Certified Forensic Investigator</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-navy to-secondary-charcoal text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-5">Partner with Excellence</h2>
+            <p class="text-gray-200 max-w-2xl mx-auto mb-8">Join the ranks of global leaders who trust Sentinel Intel for their most sensitive security needs.</p>
+            <a href="contact.html" class="btn-gold inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-lg"><i class="fas fa-phone-alt"></i> Contact Our Team</a>
+        </div>
+    </section>
+
+    <!-- Footer - EXACT COPY from reference -->
+    <footer class="py-16 bg-neutral-light dark:bg-dark-bg">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center"><i class="fas fa-user-secret text-primary-navy text-lg"></i></div>
+                        <div><span class="text-2xl font-display font-bold tracking-tight text-neutral-dark dark:text-white">SENTINEL</span></div>
+                    </div>
+                    <p class="mb-6 opacity-80 dark:opacity-70">Elite private investigation and security consulting. Discretion, precision, and results.</p>
+                    <div class="flex space-x-4 justify-center md:justify-start"><a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon"><i class="fab fa-twitter"></i></a><a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon"><i class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Quick Links</h3><ul class="space-y-3"><li><a class='hover:text-accent-gold transition block' href='index.html'>Home</a></li><li><a class='hover:text-accent-gold transition block' href='about.html'>About</a></li><li><a class='hover:text-accent-gold transition block' href='service.html'>Services</a></li><li><a class='hover:text-accent-gold transition block' href='consult.html'>Consult</a></li><li><a class='hover:text-accent-gold transition block' href='contact.html'>Contact</a></li></ul></div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Investigations</h3><ul class="space-y-3"><li><a href="#" class="hover:text-accent-gold transition block">Corporate Fraud</a></li><li><a href="#" class="hover:text-accent-gold transition block">Surveillance</a></li><li><a href="#" class="hover:text-accent-gold transition block">Digital Forensics</a></li><li><a href="#" class="hover:text-accent-gold transition block">Background Checks</a></li><li><a href="#" class="hover:text-accent-gold transition block">Asset Tracing</a></li></ul></div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Contact</h3><ul class="space-y-4"><li class="flex items-start justify-center md:justify-start"><i class="fas fa-map-marker-alt text-accent-gold mt-1 mr-3"></i><span>777 5th Ave, New York, NY</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-phone text-accent-gold mr-3"></i><span>+1 (212) 555-7890</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-envelope text-accent-gold mr-3"></i><span>contact@sentinel.com</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-clock text-accent-gold mr-3"></i><span>24/7 Emergency</span></li></ul></div>
+            </div>
+            <div class="mt-12 pt-8 border-t text-center border-neutral-light dark:border-gray-800"><p class="text-sm opacity-75 dark:opacity-70">&copy; 2026 SENTINEL. All rights reserved. <i class="fas fa-heart text-accent-gold mx-1"></i> Private Investigation & Security.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileThemeToggle = document.getElementById('theme-toggle-mobile');
+            
+            function toggleTheme() {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                [themeToggle, mobileThemeToggle].forEach(btn => {
+                    if(btn) {
+                        const moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
+                        if(isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); btn.classList.add('active'); }
+                        else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); btn.classList.remove('active'); }
+                    }
+                });
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+            
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                [themeToggle, mobileThemeToggle].forEach(btn => {
+                    if(btn) {
+                        btn.querySelector('.fa-moon')?.classList.add('hidden');
+                        btn.querySelector('.fa-sun')?.classList.remove('hidden');
+                        btn.classList.add('active');
+                    }
+                });
+            }
+            
+            // RTL Toggle
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const mobileRtlToggle = document.getElementById('rtl-toggle-mobile');
+            function toggleRTL() {
+                document.documentElement.dir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl';
+                localStorage.setItem('dir', document.documentElement.dir);
+            }
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+            if (localStorage.getItem('dir') === 'rtl') document.documentElement.dir = 'rtl';
+            
+            // Mobile Menu
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileToggleIcon = document.querySelector('#mobile-toggle i');
+            
+            if (mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('open');
+                    if (mobileMenu.classList.contains('open')) {
+                        mobileToggleIcon.classList.remove('fa-bars');
+                        mobileToggleIcon.classList.add('fa-times');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileToggleIcon.classList.remove('fa-times');
+                        mobileToggleIcon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('show'));
+                    }
+                });
+            }
+            
+            // Mobile dropdowns
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = btn.closest('.mobile-dropdown');
+                    const content = dropdown.querySelector('.mobile-dropdown-content');
+                    const icon = dropdown.querySelector('.fa-chevron-down');
+                    content.classList.toggle('show');
+                    icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    if (content.classList.contains('show')) {
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(c => {
+                            if (c !== content) c.classList.remove('show');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

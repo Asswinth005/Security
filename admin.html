@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Admin Dashboard | Sentinel Intel - Case Management System</title>
+    <!-- Sentinel Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231E2A36'/%3E%3Cpath fill='%23D4AF37' d='M50 25 L70 40 L70 60 L50 75 L30 60 L30 40 Z'/%3E%3Ccircle cx='50' cy='50' r='12' fill='none' stroke='%23D4AF37' stroke-width='3'/%3E%3Cpath fill='%23D4AF37' d='M60 58 L68 66 L65 69 L57 61 Z'/%3E%3C/svg%3E">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#0A1928',
+                        'secondary-charcoal': '#1E2A36',
+                        'accent-gold': '#D4AF37',
+                        'accent-gold-dark': '#B4942C',
+                        'neutral-dark': '#0F1A24',
+                        'neutral-light': '#F5F7FA',
+                        'dark-bg': '#0A0F15',
+                        'dark-card': '#16212B',
+                        'status-active': '#10B981',
+                        'status-pending': '#F59E0B',
+                        'status-review': '#3B82F6',
+                        'status-closed': '#6B7280',
+                        'status-urgent': '#EF4444'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Lexend', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #F5F7FA;
+            color: #1E2A36;
+        }
+        
+        .dark body {
+            background-color: #0A0F15;
+            color: #E5E7EB;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E5E7EB;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #2D3A46;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            color: #6B7280;
+        }
+        
+        .dark .sidebar-item {
+            color: #9CA3AF;
+        }
+        
+        .sidebar-item i {
+            width: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .sidebar-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #D4AF37;
+        }
+        
+        .sidebar-item.active {
+            background: rgba(212, 175, 55, 0.15);
+            color: #D4AF37;
+            border-left: 3px solid #D4AF37;
+        }
+        
+        .dark .sidebar-item.active {
+            background: rgba(212, 175, 55, 0.2);
+        }
+        
+        /* Card styles */
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Table styles */
+        .data-table-row {
+            transition: all 0.2s ease;
+        }
+        
+        .data-table-row:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+        
+        /* Status badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        /* Button styles */
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #B4942C 100%);
+            color: #0A1928;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+        }
+        
+        .btn-outline-gold {
+            border: 1.5px solid #D4AF37;
+            color: #D4AF37;
+            background: transparent;
+            transition: all 0.2s;
+        }
+        
+        .btn-outline-gold:hover {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        
+        /* Toggle button */
+        .toggle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #F3F4F6;
+            color: #6B7280;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dark .toggle-btn {
+            background: #2D3A46;
+            color: #9CA3AF;
+        }
+        
+        .toggle-btn:hover {
+            background: #E5E7EB;
+            color: #D4AF37;
+        }
+        
+        /* Mobile sidebar */
+        .mobile-sidebar {
+            position: fixed;
+            left: -280px;
+            top: 0;
+            bottom: 0;
+            width: 280px;
+            background: white;
+            z-index: 1000;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .mobile-sidebar {
+            background: #0A0F15;
+        }
+        
+        .mobile-sidebar.open {
+            left: 0;
+        }
+        
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.open {
+            display: block;
+        }
+        
+        .no-scroll {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-neutral-light dark:bg-dark-bg">
+
+    <!-- Overlay for mobile -->
+    <div id="overlay" class="overlay"></div>
+    
+    <!-- Mobile Sidebar -->
+    <div id="mobile-sidebar" class="mobile-sidebar flex flex-col">
+        <div class="p-5 border-b border-gray-100 dark:border-gray-800">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                      <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center">
+                        <i class="fas fa-user-secret text-primary-navy text-xl"></i>
+    </div>
+    <div>
+         <span class="text-2xl font-display font-bold text-neutral-dark dark:text-white">SENTINEL</span>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Admin Portal</p>
+                    </div>
+                </div>
+                <button id="close-sidebar" class="p-2"><i class="fas fa-times text-gray-500"></i></button>
+            </div>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <div class="sidebar-item-mobile active" data-tab="dashboard"><i class="fas fa-chart-pie"></i><span>Dashboard</span></div>
+            <div class="sidebar-item-mobile" data-tab="cases"><i class="fas fa-folder-open"></i><span>All Cases</span><span class="ml-auto text-xs bg-accent-gold/20 text-accent-gold px-2 py-0.5 rounded-full">24</span></div>
+            <div class="sidebar-item-mobile" data-tab="clients"><i class="fas fa-users"></i><span>Clients</span><span class="ml-auto text-xs bg-accent-gold/20 text-accent-gold px-2 py-0.5 rounded-full">156</span></div>
+            <div class="sidebar-item-mobile" data-tab="investigators"><i class="fas fa-user-secret"></i><span>Investigators</span><span class="ml-auto text-xs bg-accent-gold/20 text-accent-gold px-2 py-0.5 rounded-full">12</span></div>
+            <div class="sidebar-item-mobile" data-tab="reports"><i class="fas fa-chart-line"></i><span>Reports</span></div>
+            <div class="sidebar-item-mobile" data-tab="settings"><i class="fas fa-cog"></i><span>Settings</span></div>
+        </nav>
+        <div class="p-4 border-t border-gray-100 dark:border-gray-800">
+            <div class="flex items-center space-x-3 mb-3">
+                <div class="w-8 h-8 bg-accent-gold/20 rounded-full flex items-center justify-center"><i class="fas fa-user-cog text-accent-gold text-sm"></i></div>
+                <div><p class="text-sm font-medium dark:text-white">Admin User</p><p class="text-xs text-gray-500">Super Administrator</p></div>
+            </div>
+            <button id="theme-toggle-mobile" class="w-full btn-outline-gold py-2 rounded-lg text-sm mb-2"><i class="fas fa-moon mr-2"></i>Dark Mode</button>
+            <a href="login.html" class="w-full block text-center py-2 text-sm text-red-500 hover:text-red-600"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="flex h-screen overflow-hidden">
+        <!-- Desktop Sidebar -->
+        <aside class="hidden md:flex md:w-72 flex-col bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-800 overflow-y-auto">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-800">
+                <div class="flex items-center space-x-3">
+                     <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center">
+                        <i class="fas fa-user-secret text-primary-navy text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-display font-bold text-neutral-dark dark:text-white">SENTINEL</span>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Admin Control Panel</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-b border-gray-200 dark:border-gray-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-accent-gold/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user-cog text-accent-gold"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold dark:text-white">Admin User</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Super Administrator</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex-1 p-4 space-y-1">
+                <div class="sidebar-item active" data-tab="dashboard"><i class="fas fa-chart-pie"></i><span>Dashboard</span></div>
+                <div class="sidebar-item" data-tab="cases"><i class="fas fa-folder-open"></i><span>All Cases</span><span class="ml-auto text-xs bg-accent-gold/20 text-accent-gold px-2 py-0.5 rounded-full">24</span></div>
+                <div class="sidebar-item" data-tab="clients"><i class="fas fa-users"></i><span>Clients</span><span class="ml-auto text-xs bg-accent-gold/20 text-accent-gold px-2 py-0.5 rounded-full">156</span></div>
+                <div class="sidebar-item" data-tab="investigators"><i class="fas fa-user-secret"></i><span>Investigators</span><span class="ml-auto text-xs bg-accent-gold/20 text-accent-gold px-2 py-0.5 rounded-full">12</span></div>
+                <div class="sidebar-item" data-tab="reports"><i class="fas fa-chart-line"></i><span>Reports & Analytics</span></div>
+                <div class="sidebar-item" data-tab="settings"><i class="fas fa-cog"></i><span>System Settings</span></div>
+            </nav>
+            <div class="p-4 border-t border-gray-200 dark:border-gray-800">
+                <button id="theme-toggle-desktop" class="w-full btn-outline-gold py-2 rounded-lg text-sm mb-2"><i class="fas fa-moon mr-2"></i>Dark Mode</button>
+                <a href="login.html" class="w-full block text-center py-2 text-sm text-red-500 hover:text-red-600"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <!-- Mobile Header -->
+            <header class="md:hidden bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-800 sticky top-0 z-20">
+                <div class="flex items-center justify-between px-4 py-3">
+                    <button id="open-sidebar" class="p-2"><i class="fas fa-bars text-xl text-neutral-dark dark:text-white"></i></button>
+                    <div class="flex items-center space-x-2">
+                       <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center">
+                        <i class="fas fa-user-secret text-primary-navy text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-display font-bold text-neutral-dark dark:text-white">SENTINEL</span>
+                    </div>
+                    <div class="w-8"></div>
+                </div>
+            </header>
+            
+            <div class="p-4 md:p-6">
+                <!-- Dashboard Tab -->
+                <div id="tab-dashboard" class="tab-content">
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                        <div class="stat-card bg-white dark:bg-dark-card rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800"><div><p class="text-gray-500 dark:text-gray-400 text-xs">Total Cases</p><p class="text-2xl font-bold dark:text-white mt-1">124</p><p class="text-xs text-green-500 mt-1">+12 this month</p></div></div>
+                        <div class="stat-card bg-white dark:bg-dark-card rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800"><div><p class="text-gray-500 dark:text-gray-400 text-xs">Active Cases</p><p class="text-2xl font-bold dark:text-white mt-1">48</p><p class="text-xs text-status-active">39% of total</p></div></div>
+                        <div class="stat-card bg-white dark:bg-dark-card rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800"><div><p class="text-gray-500 dark:text-gray-400 text-xs">Total Clients</p><p class="text-2xl font-bold dark:text-white mt-1">156</p><p class="text-xs text-green-500 mt-1">+8 this month</p></div></div>
+                        <div class="stat-card bg-white dark:bg-dark-card rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800"><div><p class="text-gray-500 dark:text-gray-400 text-xs">Resolution Rate</p><p class="text-2xl font-bold dark:text-white mt-1">94%</p><p class="text-xs text-status-active">↑ 2% from last month</p></div></div>
+                    </div>
+                    
+                    <!-- Recent Cases Table -->
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <div class="p-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center"><h3 class="font-semibold dark:text-white">Recent Cases</h3><button class="text-sm text-accent-gold" data-tab-switch="cases">View All →</button></div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead class="bg-gray-50 dark:bg-gray-800"><tr><th class="px-4 py-3 text-left">Case ID</th><th class="px-4 py-3 text-left">Client</th><th class="px-4 py-3 text-left">Type</th><th class="px-4 py-3 text-left">Status</th><th class="px-4 py-3 text-left">Assigned To</th><th class="px-4 py-3 text-left">Updated</th></tr></thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    <tr class="data-table-row"><td class="px-4 py-3 font-medium">SC-2024-001</td><td class="px-4 py-3">John Carter</td><td class="px-4 py-3">Corporate Fraud</td><td class="px-4 py-3"><span class="status-badge bg-status-active/10 text-status-active"><i class="fas fa-spinner fa-pulse mr-1"></i> Active</span></td><td class="px-4 py-3">M. Reynolds</td><td class="px-4 py-3 text-gray-500">2 hours ago</td></tr>
+                                    <tr class="data-table-row"><td class="px-4 py-3 font-medium">SC-2024-002</td><td class="px-4 py-3">Sarah Williams</td><td class="px-4 py-3">Background Check</td><td class="px-4 py-3"><span class="status-badge bg-status-review/10 text-status-review">Review</span></td><td class="px-4 py-3">S. Chen</td><td class="px-4 py-3 text-gray-500">Yesterday</td></tr>
+                                    <tr class="data-table-row"><td class="px-4 py-3 font-medium">SC-2024-003</td><td class="px-4 py-3">Michael Chen</td><td class="px-4 py-3">Surveillance</td><td class="px-4 py-3"><span class="status-badge bg-status-urgent/10 text-status-urgent">Urgent</span></td><td class="px-4 py-3">J. O'Connor</td><td class="px-4 py-3 text-gray-500">3 days ago</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity & Quick Actions -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-gray-800"><div class="p-4 border-b"><h3 class="font-semibold dark:text-white">Recent Activity</h3></div><div class="p-4 space-y-3"><div class="flex items-start gap-3"><i class="fas fa-plus-circle text-accent-gold mt-0.5"></i><div><p class="text-sm">New case created: SC-2024-024</p><p class="text-xs text-gray-500">10 minutes ago</p></div></div><div class="flex items-start gap-3"><i class="fas fa-user-plus text-accent-gold mt-0.5"></i><div><p class="text-sm">New client registered: David Thompson</p><p class="text-xs text-gray-500">1 hour ago</p></div></div><div class="flex items-start gap-3"><i class="fas fa-file-alt text-accent-gold mt-0.5"></i><div><p class="text-sm">Document uploaded to case SC-2024-001</p><p class="text-xs text-gray-500">3 hours ago</p></div></div></div></div>
+                        <div class="bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-gray-800"><div class="p-4 border-b"><h3 class="font-semibold dark:text-white">Quick Actions</h3></div><div class="p-4 space-y-3"><button class="w-full btn-gold py-2 rounded-lg text-sm"><i class="fas fa-plus mr-2"></i>Create New Case</button><button class="w-full btn-outline-gold py-2 rounded-lg text-sm"><i class="fas fa-user-plus mr-2"></i>Add New Client</button><button class="w-full btn-outline-gold py-2 rounded-lg text-sm"><i class="fas fa-user-secret mr-2"></i>Assign Investigator</button><button class="w-full btn-outline-gold py-2 rounded-lg text-sm"><i class="fas fa-chart-line mr-2"></i>Generate Report</button></div></div>
+                    </div>
+                </div>
+                
+                <!-- Cases Tab -->
+                <div id="tab-cases" class="tab-content hidden">
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+                        <div class="p-4 border-b flex justify-between items-center flex-wrap gap-3"><h3 class="font-semibold dark:text-white">All Cases (124)</h3><div class="flex gap-2"><input type="text" placeholder="Search cases..." class="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-card text-sm"><button class="btn-gold px-4 py-1.5 rounded-lg text-sm"><i class="fas fa-search"></i></button></div></div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead class="bg-gray-50 dark:bg-gray-800"><tr><th class="px-4 py-3 text-left">Case ID</th><th class="px-4 py-3 text-left">Client</th><th class="px-4 py-3 text-left">Type</th><th class="px-4 py-3 text-left">Priority</th><th class="px-4 py-3 text-left">Status</th><th class="px-4 py-3 text-left">Investigator</th><th class="px-4 py-3 text-left">Actions</th></tr></thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    <tr><td class="px-4 py-3 font-medium">SC-2024-001</td><td class="px-4 py-3">John Carter</td><td class="px-4 py-3">Corporate Fraud</td><td class="px-4 py-3"><span class="text-status-urgent">High</span></td><td class="px-4 py-3"><span class="status-badge bg-status-active/10 text-status-active">Active</span></td><td class="px-4 py-3">M. Reynolds</td><td class="px-4 py-3"><button class="text-accent-gold text-sm">Edit</button></td></tr>
+                                    <tr><td class="px-4 py-3 font-medium">SC-2024-002</td><td class="px-4 py-3">Sarah Williams</td><td class="px-4 py-3">Background Check</td><td class="px-4 py-3"><span class="text-status-pending">Medium</span></td><td class="px-4 py-3"><span class="status-badge bg-status-review/10 text-status-review">Review</span></td><td class="px-4 py-3">S. Chen</td><td class="px-4 py-3"><button class="text-accent-gold text-sm">Edit</button></td></tr>
+                                    <tr><td class="px-4 py-3 font-medium">SC-2024-003</td><td class="px-4 py-3">Michael Chen</td><td class="px-4 py-3">Surveillance</td><td class="px-4 py-3"><span class="text-status-urgent">Urgent</span></td><td class="px-4 py-3"><span class="status-badge bg-status-urgent/10 text-status-urgent">Urgent</span></td><td class="px-4 py-3">J. O'Connor</td><td class="px-4 py-3"><button class="text-accent-gold text-sm">Edit</button></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clients Tab -->
+                <div id="tab-clients" class="tab-content hidden">
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+                        <div class="p-4 border-b flex justify-between items-center"><h3 class="font-semibold dark:text-white">Client Management</h3><button class="btn-gold px-4 py-1.5 rounded-lg text-sm"><i class="fas fa-plus mr-2"></i>Add Client</button></div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead class="bg-gray-50 dark:bg-gray-800"><tr><th class="px-4 py-3 text-left">Client ID</th><th class="px-4 py-3 text-left">Name</th><th class="px-4 py-3 text-left">Email</th><th class="px-4 py-3 text-left">Cases</th><th class="px-4 py-3 text-left">Status</th><th class="px-4 py-3 text-left">Joined</th></tr></thead>
+                                <tbody><tr><td class="px-4 py-3">#CL-2847</td><td class="px-4 py-3 font-medium">John Carter</td><td class="px-4 py-3">john.c@email.com</td><td class="px-4 py-3">2</td><td class="px-4 py-3"><span class="status-badge bg-status-active/10 text-status-active">Active</span></td><td class="px-4 py-3">Jan 2026</td></tr><tr><td class="px-4 py-3">#CL-2848</td><td class="px-4 py-3 font-medium">Sarah Williams</td><td class="px-4 py-3">sarah.w@email.com</td><td class="px-4 py-3">1</td><td class="px-4 py-3"><span class="status-badge bg-status-active/10 text-status-active">Active</span></td><td class="px-4 py-3">Feb 2026</td></tr></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Investigators Tab -->
+                <div id="tab-investigators" class="tab-content hidden">
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+                        <div class="p-4 border-b flex justify-between items-center"><h3 class="font-semibold dark:text-white">Investigators Team</h3><button class="btn-gold px-4 py-1.5 rounded-lg text-sm"><i class="fas fa-plus mr-2"></i>Add Investigator</button></div>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                            <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-4"><div class="flex items-center gap-3"><div class="w-12 h-12 bg-accent-gold/20 rounded-full flex items-center justify-center"><i class="fas fa-user-secret text-accent-gold text-xl"></i></div><div><h4 class="font-semibold">Michael Reynolds</h4><p class="text-xs text-gray-500">Senior Investigator</p></div></div><div class="mt-3"><p class="text-xs"><i class="fas fa-folder-open mr-1"></i> Active Cases: 5</p><p class="text-xs mt-1"><i class="fas fa-check-circle mr-1"></i> Success Rate: 96%</p></div></div>
+                            <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-4"><div class="flex items-center gap-3"><div class="w-12 h-12 bg-accent-gold/20 rounded-full flex items-center justify-center"><i class="fas fa-user-secret text-accent-gold text-xl"></i></div><div><h4 class="font-semibold">Sarah Chen</h4><p class="text-xs text-gray-500">Forensic Specialist</p></div></div><div class="mt-3"><p class="text-xs"><i class="fas fa-folder-open mr-1"></i> Active Cases: 3</p><p class="text-xs mt-1"><i class="fas fa-check-circle mr-1"></i> Success Rate: 98%</p></div></div>
+                            <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-4"><div class="flex items-center gap-3"><div class="w-12 h-12 bg-accent-gold/20 rounded-full flex items-center justify-center"><i class="fas fa-user-secret text-accent-gold text-xl"></i></div><div><h4 class="font-semibold">James O'Connor</h4><p class="text-xs text-gray-500">Surveillance Expert</p></div></div><div class="mt-3"><p class="text-xs"><i class="fas fa-folder-open mr-1"></i> Active Cases: 4</p><p class="text-xs mt-1"><i class="fas fa-check-circle mr-1"></i> Success Rate: 92%</p></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reports Tab -->
+                <div id="tab-reports" class="tab-content hidden">
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 p-6">
+                        <h3 class="font-semibold dark:text-white mb-4">Generate Reports</h3>
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <button class="p-4 border rounded-xl text-center hover:border-accent-gold transition"><i class="fas fa-chart-line text-accent-gold text-2xl mb-2"></i><p class="font-medium">Case Summary</p><p class="text-xs text-gray-500">Monthly case statistics</p></button>
+                            <button class="p-4 border rounded-xl text-center hover:border-accent-gold transition"><i class="fas fa-users text-accent-gold text-2xl mb-2"></i><p class="font-medium">Client Report</p><p class="text-xs text-gray-500">Client activity overview</p></button>
+                            <button class="p-4 border rounded-xl text-center hover:border-accent-gold transition"><i class="fas fa-chart-pie text-accent-gold text-2xl mb-2"></i><p class="font-medium">Performance</p><p class="text-xs text-gray-500">Investigator metrics</p></button>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4"><p class="text-sm text-center text-gray-500">Select a report type above to generate detailed analytics</p></div>
+                    </div>
+                </div>
+                
+                <!-- Settings Tab -->
+                <div id="tab-settings" class="tab-content hidden">
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 p-6">
+                        <h3 class="font-semibold dark:text-white mb-4">System Settings</h3>
+                        <div class="space-y-4"><div class="flex justify-between items-center py-3 border-b"><span>Email Notifications</span><button class="btn-outline-gold px-4 py-1 rounded-lg text-sm">Configure</button></div><div class="flex justify-between items-center py-3 border-b"><span>Security Protocols</span><button class="btn-outline-gold px-4 py-1 rounded-lg text-sm">Configure</button></div><div class="flex justify-between items-center py-3 border-b"><span>User Permissions</span><button class="btn-outline-gold px-4 py-1 rounded-lg text-sm">Manage</button></div><div class="flex justify-between items-center py-3"><span>Audit Logs</span><button class="btn-outline-gold px-4 py-1 rounded-lg text-sm">View Logs</button></div></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const tabs = document.querySelectorAll('.sidebar-item, .sidebar-item-mobile');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            function switchTab(tabId) {
+                contents.forEach(content => content.classList.add('hidden'));
+                document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+                tabs.forEach(t => t.classList.remove('active'));
+                tabs.forEach(t => { if(t.getAttribute('data-tab') === tabId) t.classList.add('active'); });
+            }
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    switchTab(tabId);
+                    document.getElementById('mobile-sidebar')?.classList.remove('open');
+                    document.getElementById('overlay')?.classList.remove('open');
+                    document.body.classList.remove('no-scroll');
+                });
+            });
+            
+            document.querySelectorAll('[data-tab-switch]').forEach(btn => {
+                btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab-switch')));
+            });
+            
+            // Theme toggle
+            function setTheme(isDark) { if(isDark) document.documentElement.classList.add('dark'); else document.documentElement.classList.remove('dark'); localStorage.setItem('theme', isDark ? 'dark' : 'light'); }
+            const saved = localStorage.getItem('theme');
+            if(saved === 'dark') setTheme(true);
+            document.querySelectorAll('#theme-toggle-desktop, #theme-toggle-mobile').forEach(btn => {
+                btn?.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+            });
+            
+            // Mobile sidebar
+            const openBtn = document.getElementById('open-sidebar');
+            const mobileSidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('overlay');
+            const closeBtn = document.getElementById('close-sidebar');
+            
+            function openMobileSidebar() { mobileSidebar?.classList.add('open'); overlay?.classList.add('open'); document.body.classList.add('no-scroll'); }
+            function closeMobileSidebar() { mobileSidebar?.classList.remove('open'); overlay?.classList.remove('open'); document.body.classList.remove('no-scroll'); }
+            openBtn?.addEventListener('click', openMobileSidebar);
+            closeBtn?.addEventListener('click', closeMobileSidebar);
+            overlay?.addEventListener('click', closeMobileSidebar);
+        });
+    </script>
+</body>
+</html>

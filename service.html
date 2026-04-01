@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel | Elite Security & Investigation Services</title>
+    <!-- Custom Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231E2A36'/%3E%3Cpath fill='%23D4AF37' d='M50 25 L70 40 L70 60 L50 75 L30 60 L30 40 Z'/%3E%3Ccircle cx='50' cy='50' r='12' fill='none' stroke='%23D4AF37' stroke-width='3'/%3E%3Cpath fill='%23D4AF37' d='M60 58 L68 66 L65 69 L57 61 Z'/%3E%3C/svg%3E">
+    <meta name="description" content="Comprehensive investigation and security services including corporate fraud, surveillance, digital forensics, executive protection, and security consulting.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#0A1928',
+                        'secondary-charcoal': '#1E2A36',
+                        'accent-gold': '#D4AF37',
+                        'accent-gold-dark': '#B4942C',
+                        'neutral-dark': '#0F1A24',
+                        'neutral-light': '#F5F7FA',
+                        'dark-bg': '#0A0F15',
+                        'dark-card': '#16212B'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Lexend', 'Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #F5F7FA;
+            color: #1E2A36;
+            scroll-behavior: smooth;
+        }
+        .dark body {
+            background-color: #0A0F15;
+            color: #E5E7EB;
+        }
+        body::-webkit-scrollbar { width: 6px; }
+        body::-webkit-scrollbar-track { background: #E5E7EB; }
+        body::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        
+        /* Navigation Styles */
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        .nav-item:hover::after { width: 100%; }
+        
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #E5E7EB;
+        }
+        .dark .dropdown-menu {
+            background: #16212B;
+            border-color: #2D3A46;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: #1E2A36;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .dark .dropdown-item { color: #E5E7EB; }
+        .dropdown-item:hover {
+            background: #F3F4F6;
+            color: #D4AF37;
+            padding-left: 1.75rem;
+        }
+        .dark .dropdown-item:hover {
+            background: #2D3A46;
+            color: #D4AF37;
+        }
+        .dropdown-item i { margin-right: 0.75rem; width: 20px; text-align: center; }
+        
+        .auth-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .auth-btn.login {
+            background: transparent;
+            border-color: #D1D5DB;
+            color: #1E2A36;
+        }
+        .dark .auth-btn.login {
+            border-color: #4B5563;
+            color: #D1D5DB;
+        }
+        .auth-btn.login:hover { border-color: #D4AF37; color: #D4AF37; }
+        .auth-btn.signup {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        .auth-btn.signup:hover {
+            background: #B4942C;
+            transform: translateY(-2px);
+        }
+        
+        .toggle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F3F4F6;
+            color: #6B7280;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .dark .toggle-btn { background: #2D3A46; color: #9CA3AF; }
+        .toggle-btn:hover { background: #E5E7EB; color: #D4AF37; }
+        .dark .toggle-btn:hover { background: #3B4A58; color: #D4AF37; }
+        .toggle-btn.active { background: #D4AF37; color: white; }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #B4942C 100%);
+            color: #0A1928;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+        }
+        
+        .btn-outline-gold {
+            border: 1.5px solid #D4AF37;
+            color: #D4AF37;
+            background: transparent;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-outline-gold:hover {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            background: white;
+            border-top: 1px solid #E5E5E5;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .dark .mobile-menu {
+            background: #0A0F15;
+            border-color: #2D3A46;
+        }
+        .mobile-menu.open {
+            max-height: 85vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        .mobile-menu.open::-webkit-scrollbar { display: none; }
+        .mobile-menu-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            color: #1E2A36;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        .dark .mobile-menu-item {
+            color: #D1D5DB;
+            border-bottom-color: #2D3A46;
+        }
+        .mobile-menu-item:hover {
+            background-color: #F9FAFB;
+            color: #D4AF37;
+        }
+        .mobile-auth-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            border-radius: 8px;
+            text-align: center;
+            margin: 0.25rem;
+            border: 1px solid transparent;
+        }
+        .mobile-auth-btn.login {
+            background: transparent;
+            border-color: #D1D5DB;
+            color: #1E2A36;
+        }
+        .dark .mobile-auth-btn.login {
+            border-color: #4B5563;
+            color: #D1D5DB;
+        }
+        .mobile-auth-btn.login:hover {
+            background-color: #D4AF37;
+            color: white;
+        }
+        .mobile-auth-btn.signup {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        .mobile-auth-btn.signup:hover { background: #B4942C; }
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .mobile-dropdown-content.show { max-height: 300px; }
+        .mobile-dropdown-item {
+            display: block;
+            padding: 0.75rem 2.5rem;
+            font-size: 0.95rem;
+            color: #6B7280;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #F9FAFB;
+        }
+        .dark .mobile-dropdown-item {
+            color: #9CA3AF;
+            border-bottom-color: #2D3A46;
+        }
+        .mobile-dropdown-item:hover {
+            color: #D4AF37;
+            background-color: #F9FAFB;
+        }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #F3F4F6;
+            color: #1E2A36;
+            transition: all 0.3s ease;
+        }
+        .dark .social-icon {
+            background: #2D3A46;
+            color: #E5E7EB;
+        }
+        .social-icon:hover {
+            background: #D4AF37;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Services Page Specific Styles */
+        .service-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+        .dark .service-card {
+            background: #16212B;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+        
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .price-tag {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #D4AF37;
+            line-height: 1;
+        }
+        
+        .package-card {
+            background: white;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .dark .package-card {
+            background: #16212B;
+        }
+        .package-card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-5px);
+        }
+        .package-card.popular {
+            border-color: #D4AF37;
+            position: relative;
+            overflow: hidden;
+        }
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #D4AF37;
+            color: #0A1928;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .dashboard-dropdown { position: relative; }
+        .dashboard-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #E5E7EB;
+        }
+        .dark .dashboard-dropdown-menu {
+            background: #16212B;
+            border-color: #2D3A46;
+        }
+        .dashboard-dropdown:hover .dashboard-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .desktop-nav-container { display: flex; align-items: center; gap: 2rem; }
+        .nav-spacing { display: flex; align-items: center; gap: 2rem; }
+        
+        /* Service Detail Page */
+        .service-detail-page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+        .service-detail-page.active {
+            display: block;
+        }
+        .services-main-page.hidden {
+            display: none;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: #1E2A36;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        .dark .back-button {
+            color: #E5E7EB;
+        }
+        .back-button:hover {
+            color: #D4AF37;
+            transform: translateX(-5px);
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #D4AF37;
+            color: #0A1928;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        .service-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-md border-b border-neutral-light dark:border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <a class='flex items-center space-x-3 group' href='index.html'>
+                    <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+                        <i class="fas fa-user-secret text-primary-navy text-lg"></i>
+                    </div>
+                    <div><span class="text-2xl font-display font-bold tracking-tight text-neutral-dark dark:text-white">SENTINEL</span></div>
+                </a>
+
+                <div class="hidden xl:flex items-center">
+                    <div class="desktop-nav-container">
+                        <div class="nav-spacing">
+                            <div class="dropdown">
+                                <button class="nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition flex items-center">
+                                    Home <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class='dropdown-item' href='index.html'><i class="fas fa-home"></i> Home 1</a>
+                                    <a href="home2.html" class="dropdown-item"><i class="fas fa-home"></i> Home 2</a>
+                                </div>
+                            </div>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='about.html'>About</a>
+                            <a class='nav-item font-medium text-accent-gold transition' href='service.html' style="color:#D4AF37; font-weight:600;">Services</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='book.html'>Consult</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='gallery.html'>Cases</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='contact.html'>Contact</a>
+                            <div class="dashboard-dropdown">
+                                <button class="nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition flex items-center">
+                                    Dashboard <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                                </button>
+                                <div class="dashboard-dropdown-menu">
+                                    <a class='dropdown-item' href='admin.html'><i class="fas fa-user-shield"></i> Admin</a>
+                                    <a class='dropdown-item' href='client.html'><i class="fas fa-user"></i> Client</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <a class='auth-btn login' href='login.html'>Login</a>
+                            <a class='auth-btn signup' href='signup.html'>Sign Up</a>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 ml-4">
+                        <button id="theme-toggle" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                        <button id="rtl-toggle" class="toggle-btn">⇄</button>
+                    </div>
+                </div>
+
+                <button id="mobile-toggle" class="xl:hidden text-neutral-dark dark:text-gray-300 p-2"><i class="fas fa-bars text-xl"></i></button>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu xl:hidden">
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item"><span>Home</span><i class="fas fa-chevron-down text-xs"></i></button>
+                    <div class="mobile-dropdown-content">
+                        <a class='mobile-dropdown-item' href='index.html'><i class="fas fa-home mr-2"></i>Home 1</a>
+                        <a href="home2.html" class="mobile-dropdown-item">Home 2</a>
+                    </div>
+                </div>
+                <a class='mobile-menu-item' href='about.html'>About</a>
+                <a class='mobile-menu-item' href='service.html' style="color:#D4AF37;">Services</a>
+                <a class='mobile-menu-item' href='book.html'>Consult</a>
+                <a class='mobile-menu-item' href='gallery.html'>Cases</a>
+                <a class='mobile-menu-item' href='contact.html'>Contact</a>
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item"><span>Dashboard</span><i class="fas fa-chevron-down text-xs"></i></button>
+                    <div class="mobile-dropdown-content"><a class='mobile-dropdown-item' href='admin.html'>Admin</a><a class='mobile-dropdown-item' href='client.html'>Client</a></div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 p-6">
+                    <a class='mobile-auth-btn login flex-1 text-center' href='login.html'>Login</a>
+                    <a class='mobile-auth-btn signup flex-1 text-center' href='signup.html'>Sign Up</a>
+                </div>
+                <div class="flex justify-center gap-3 p-6 border-t border-gray-200 dark:border-gray-800">
+                    <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                    <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ MAIN SERVICES PAGE ============ -->
+    <div id="services-main-page" class="services-main-page">
+    <!-- HERO SECTION - INCREASED BREATHING SPACE -->
+    <section class="relative pt-48 pb-48 overflow-hidden" style="background: linear-gradient(125deg, #0A1928 0%, #0F2A38 100%);">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-gold/10 rounded-full mb-8">
+                    <i class="fas fa-cogs text-accent-gold text-sm"></i>
+                    <span class="text-accent-gold text-sm font-medium tracking-wide">Comprehensive Solutions</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-8 leading-tight">Elite <span class="text-accent-gold">Investigation & Security</span> Services</h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">Click any service card to view detailed information, pricing, and custom packages.</p>
+            </div>
+        </div>
+        
+        <!-- Decorative gradient at bottom -->
+        <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/40 to-transparent"></div>
+    </section>
+
+        <!-- SERVICES GRID WITH PRICE -->
+        <section class="py-20 bg-neutral-light dark:bg-dark-bg">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Service 1 - Corporate -->
+                    <div class="service-card p-6" data-detail="corporate">
+                        <div class="icon-wrapper"><i class="fas fa-building text-3xl text-accent-gold"></i></div>
+                        <span class="service-category text-xs mb-2 inline-block">Corporate</span>
+                        <h3 class="text-xl font-bold dark:text-white mb-2">Corporate Investigations</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Internal fraud, embezzlement, due diligence, executive screening.</p>
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                            <div><span class="price-tag">$2,500+</span><span class="text-xs text-gray-500">/ case</span></div>
+                            <div class="text-accent-gold text-sm font-medium">View Details →</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2 - Surveillance -->
+                    <div class="service-card p-6" data-detail="surveillance">
+                        <div class="icon-wrapper"><i class="fas fa-eye text-3xl text-accent-gold"></i></div>
+                        <span class="service-category text-xs mb-2 inline-block">Surveillance</span>
+                        <h3 class="text-xl font-bold dark:text-white mb-2">Surveillance Operations</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Discreet physical surveillance, counter-surveillance, monitoring.</p>
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                            <div><span class="price-tag">$1,800+</span><span class="text-xs text-gray-500">/ week</span></div>
+                            <div class="text-accent-gold text-sm font-medium">View Details →</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3 - Digital Forensics -->
+                    <div class="service-card p-6" data-detail="forensics">
+                        <div class="icon-wrapper"><i class="fas fa-database text-3xl text-accent-gold"></i></div>
+                        <span class="service-category text-xs mb-2 inline-block">Forensics</span>
+                        <h3 class="text-xl font-bold dark:text-white mb-2">Digital Forensics</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Cyber investigations, data recovery, dark web monitoring.</p>
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                            <div><span class="price-tag">$3,200+</span><span class="text-xs text-gray-500">/ investigation</span></div>
+                            <div class="text-accent-gold text-sm font-medium">View Details →</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 4 - Executive Protection -->
+                    <div class="service-card p-6" data-detail="protection">
+                        <div class="icon-wrapper"><i class="fas fa-user-shield text-3xl text-accent-gold"></i></div>
+                        <span class="service-category text-xs mb-2 inline-block">Protection</span>
+                        <h3 class="text-xl font-bold dark:text-white mb-2">Executive Protection</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Close protection, secure transport, threat assessment.</p>
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                            <div><span class="price-tag">$1,200+</span><span class="text-xs text-gray-500">/ day</span></div>
+                            <div class="text-accent-gold text-sm font-medium">View Details →</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 5 - Security Consulting -->
+                    <div class="service-card p-6" data-detail="consulting">
+                        <div class="icon-wrapper"><i class="fas fa-clipboard-list text-3xl text-accent-gold"></i></div>
+                        <span class="service-category text-xs mb-2 inline-block">Consulting</span>
+                        <h3 class="text-xl font-bold dark:text-white mb-2">Security Consulting</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Security audits, crisis management, vulnerability assessments.</p>
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                            <div><span class="price-tag">$4,500+</span><span class="text-xs text-gray-500">/ audit</span></div>
+                            <div class="text-accent-gold text-sm font-medium">View Details →</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 6 - Legal Support -->
+                    <div class="service-card p-6" data-detail="legal">
+                        <div class="icon-wrapper"><i class="fas fa-gavel text-3xl text-accent-gold"></i></div>
+                        <span class="service-category text-xs mb-2 inline-block">Legal</span>
+                        <h3 class="text-xl font-bold dark:text-white mb-2">Legal Support</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Witness location, background verification, litigation support.</p>
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                            <div><span class="price-tag">$1,500+</span><span class="text-xs text-gray-500">/ case</span></div>
+                            <div class="text-accent-gold text-sm font-medium">View Details →</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PACKAGES SECTION -->
+        <section class="py-20 bg-white dark:bg-dark-card">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <span class="text-accent-gold font-semibold uppercase tracking-wider text-sm">Investment Protection</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 dark:text-white">Service <span class="text-accent-gold">Packages</span></h2>
+                    <p class="text-gray-600 dark:text-gray-300 mt-3 max-w-2xl mx-auto">Choose a package that fits your needs or request a custom solution</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    
+                    <div class="package-card p-8 text-center">
+                        <div class="w-16 h-16 bg-accent-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-shield-alt text-2xl text-accent-gold"></i></div>
+                        <h3 class="text-2xl font-bold dark:text-white">Essential</h3>
+                        <div class="price-tag text-3xl my-3">$2,500</div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">Perfect for basic investigation needs</p>
+                        <ul class="space-y-3 text-left mb-6">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Initial Consultation</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Background Check</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Asset Verification</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Preliminary Report</span></li>
+                        </ul>
+                        <a href="book.html" class="btn-outline-gold w-full py-3 rounded-full inline-block text-center">Select Package</a>
+                    </div>
+                    
+                    <div class="package-card popular p-8 text-center relative">
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <div class="w-16 h-16 bg-accent-gold/20 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-star text-2xl text-accent-gold"></i></div>
+                        <h3 class="text-2xl font-bold dark:text-white">Professional</h3>
+                        <div class="price-tag text-3xl my-3">$5,800</div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">Comprehensive investigation suite</p>
+                        <ul class="space-y-3 text-left mb-6">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Everything in Essential +</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Full Surveillance (7 Days)</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Digital Forensics Analysis</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Court-Ready Evidence Package</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Priority Response (24hr)</span></li>
+                        </ul>
+                        <a href="book.html" class="btn-gold w-full py-3 rounded-full inline-block text-center">Select Package</a>
+                    </div>
+                    
+                    <div class="package-card p-8 text-center">
+                        <div class="w-16 h-16 bg-accent-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-crown text-2xl text-accent-gold"></i></div>
+                        <h3 class="text-2xl font-bold dark:text-white">Enterprise</h3>
+                        <div class="price-tag text-3xl my-3">$12,500+</div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">Full-service corporate security</p>
+                        <ul class="space-y-3 text-left mb-6">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Everything in Professional +</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Full Security Audit</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Executive Protection (30 Days)</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Crisis Management Plan</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-accent-gold"></i><span class="text-sm">Dedicated Case Manager</span></li>
+                        </ul>
+                        <a href="book.html" class="btn-outline-gold w-full py-3 rounded-full inline-block text-center">Contact for Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY CHOOSE US -->
+        <section class="py-20 bg-neutral-light dark:bg-dark-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <span class="text-accent-gold font-semibold uppercase tracking-wider text-sm">Why Choose Us</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 dark:text-white">Unmatched <span class="text-accent-gold">Excellence</span></h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="text-center p-6"><i class="fas fa-shield-alt text-4xl text-accent-gold mb-4"></i><h3 class="font-bold text-xl mb-2 dark:text-white">Licensed & Insured</h3><p class="text-gray-600 dark:text-gray-400 text-sm">Fully licensed private investigators with comprehensive insurance coverage.</p></div>
+                    <div class="text-center p-6"><i class="fas fa-globe text-4xl text-accent-gold mb-4"></i><h3 class="font-bold text-xl mb-2 dark:text-white">Global Network</h3><p class="text-gray-600 dark:text-gray-400 text-sm">Partners and resources across 35+ countries for international cases.</p></div>
+                    <div class="text-center p-6"><i class="fas fa-lock text-4xl text-accent-gold mb-4"></i><h3 class="font-bold text-xl mb-2 dark:text-white">Absolute Confidentiality</h3><p class="text-gray-600 dark:text-gray-400 text-sm">Strict NDAs and encrypted communications for every client.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-20 bg-gradient-to-r from-primary-navy to-secondary-charcoal text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-5">Ready to Discuss Your Needs?</h2>
+                <p class="text-gray-200 max-w-2xl mx-auto mb-8">Schedule a confidential consultation with our senior investigators.</p>
+                <a href="book.html" class="btn-gold px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2"><i class="fas fa-calendar-check"></i> Schedule Consultation</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============ DETAIL PAGES (6 services) ============ -->
+    
+    <!-- 1. Corporate Investigations Detail -->
+    <div id="detail-corporate" class="service-detail-page">
+        <div class="container mx-auto px-6 py-10">
+            <div class="back-button" onclick="goBackToServices()">
+                <i class="fas fa-arrow-left mr-2"></i> Back to All Services
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-3xl shadow-xl overflow-hidden max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="relative h-96 md:h-full bg-gradient-to-br from-primary-navy to-secondary-charcoal flex items-center justify-center">
+                        <i class="fas fa-building text-8xl text-accent-gold opacity-50"></i>
+                    </div>
+                    <div class="p-8 md:p-12">
+                        <span class="inline-block px-3 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-sm font-bold mb-4">Corporate Investigations</span>
+                        <h1 class="text-4xl md:text-5xl font-display font-bold mb-4 dark:text-white">Corporate Investigations</h1>
+                        <p class="text-2xl text-accent-gold font-bold mb-4">$2,500<span class="text-base font-normal text-gray-500 dark:text-gray-400">+ per case</span></p>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">Our corporate investigation services help organizations uncover internal fraud, embezzlement, and misconduct. We provide comprehensive due diligence, asset tracing, and executive background screening.</p>
+                        <div class="border-t border-b border-gray-200 dark:border-gray-700 py-6 mb-6">
+                            <h3 class="font-bold text-xl mb-4 dark:text-white">What's Included</h3>
+                            <ul class="grid grid-cols-2 gap-3">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-accent-gold mr-2"></i> Internal Fraud Investigation</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-accent-gold mr-2"></i> Due Diligence & M&A Support</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-accent-gold mr-2"></i> Asset Tracing & Recovery</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-accent-gold mr-2"></i> Executive Background Screening</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-accent-gold mr-2"></i> Whistleblower Investigations</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-accent-gold mr-2"></i> Court-Ready Evidence Package</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="book.html" class="btn-gold flex-1 py-4 text-lg text-center"><i class="fas fa-calendar-check mr-2"></i> Schedule Consultation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 2. Surveillance Operations Detail -->
+    <div id="detail-surveillance" class="service-detail-page">
+        <div class="container mx-auto px-6 py-10">
+            <div class="back-button" onclick="goBackToServices()"><i class="fas fa-arrow-left mr-2"></i> Back to All Services</div>
+            <div class="bg-white dark:bg-dark-card rounded-3xl shadow-xl overflow-hidden max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="relative h-96 md:h-full bg-gradient-to-br from-primary-navy to-secondary-charcoal flex items-center justify-center"><i class="fas fa-eye text-8xl text-accent-gold opacity-50"></i></div>
+                    <div class="p-8 md:p-12">
+                        <span class="inline-block px-3 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-sm font-bold mb-4">Surveillance</span>
+                        <h1 class="text-4xl md:text-5xl font-display font-bold mb-4 dark:text-white">Surveillance Operations</h1>
+                        <p class="text-2xl text-accent-gold font-bold mb-4">$1,800<span class="text-base font-normal text-gray-500 dark:text-gray-400">+ per week</span></p>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6">Our surveillance experts utilize advanced techniques and equipment to gather critical intelligence while maintaining absolute discretion.</p>
+                        <div class="border-t border-b border-gray-200 dark:border-gray-700 py-6 mb-6">
+                            <h3 class="font-bold text-xl mb-4 dark:text-white">Capabilities</h3>
+                            <ul><li>Physical Surveillance</li><li>Technical Countermeasures</li><li>Undercover Operations</li><li>Asset Monitoring</li><li>24/7 Live Monitoring</li></ul>
+                        </div>
+                        <a href="book.html" class="btn-gold flex-1 py-4 text-lg text-center block"><i class="fas fa-calendar-check mr-2"></i> Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 3. Digital Forensics Detail -->
+    <div id="detail-forensics" class="service-detail-page">
+        <div class="container mx-auto px-6 py-10">
+            <div class="back-button" onclick="goBackToServices()"><i class="fas fa-arrow-left mr-2"></i> Back to All Services</div>
+            <div class="bg-white dark:bg-dark-card rounded-3xl shadow-xl overflow-hidden max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="relative h-96 md:h-full bg-gradient-to-br from-primary-navy to-secondary-charcoal flex items-center justify-center"><i class="fas fa-database text-8xl text-accent-gold opacity-50"></i></div>
+                    <div class="p-8 md:p-12">
+                        <span class="inline-block px-3 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-sm font-bold mb-4">Digital Forensics</span>
+                        <h1 class="text-4xl md:text-5xl font-display font-bold mb-4 dark:text-white">Digital Forensics</h1>
+                        <p class="text-2xl text-accent-gold font-bold mb-4">$3,200<span class="text-base font-normal text-gray-500 dark:text-gray-400">+ per investigation</span></p>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6">Our digital forensics team recovers and analyzes electronic evidence for litigation and cybersecurity incidents.</p>
+                        <div class="border-t border-b border-gray-200 dark:border-gray-700 py-6 mb-6">
+                            <h3 class="font-bold text-xl mb-4 dark:text-white">Services</h3>
+                            <ul><li>Data Recovery & Analysis</li><li>Dark Web Monitoring</li><li>Cyber Attack Investigation</li><li>Mobile Device Forensics</li><li>Expert Witness Testimony</li></ul>
+                        </div>
+                        <a href="book.html" class="btn-gold flex-1 py-4 text-lg text-center block"><i class="fas fa-calendar-check mr-2"></i> Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 4. Executive Protection Detail -->
+    <div id="detail-protection" class="service-detail-page">
+        <div class="container mx-auto px-6 py-10">
+            <div class="back-button" onclick="goBackToServices()"><i class="fas fa-arrow-left mr-2"></i> Back to All Services</div>
+            <div class="bg-white dark:bg-dark-card rounded-3xl shadow-xl overflow-hidden max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="relative h-96 md:h-full bg-gradient-to-br from-primary-navy to-secondary-charcoal flex items-center justify-center"><i class="fas fa-user-shield text-8xl text-accent-gold opacity-50"></i></div>
+                    <div class="p-8 md:p-12">
+                        <span class="inline-block px-3 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-sm font-bold mb-4">Executive Protection</span>
+                        <h1 class="text-4xl md:text-5xl font-display font-bold mb-4 dark:text-white">Executive Protection</h1>
+                        <p class="text-2xl text-accent-gold font-bold mb-4">$1,200<span class="text-base font-normal text-gray-500 dark:text-gray-400">+ per day</span></p>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6">Comprehensive security for high-profile individuals, corporate leaders, and families.</p>
+                        <div class="border-t border-b border-gray-200 dark:border-gray-700 py-6 mb-6">
+                            <h3 class="font-bold text-xl mb-4 dark:text-white">Services</h3>
+                            <ul><li>Close Protection Details</li><li>Secure Transportation</li><li>Threat Assessment</li><li>Travel Security Management</li><li>Residential Security</li></ul>
+                        </div>
+                        <a href="book.html" class="btn-gold flex-1 py-4 text-lg text-center block"><i class="fas fa-calendar-check mr-2"></i> Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 5. Security Consulting Detail -->
+    <div id="detail-consulting" class="service-detail-page">
+        <div class="container mx-auto px-6 py-10">
+            <div class="back-button" onclick="goBackToServices()"><i class="fas fa-arrow-left mr-2"></i> Back to All Services</div>
+            <div class="bg-white dark:bg-dark-card rounded-3xl shadow-xl overflow-hidden max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="relative h-96 md:h-full bg-gradient-to-br from-primary-navy to-secondary-charcoal flex items-center justify-center"><i class="fas fa-clipboard-list text-8xl text-accent-gold opacity-50"></i></div>
+                    <div class="p-8 md:p-12">
+                        <span class="inline-block px-3 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-sm font-bold mb-4">Security Consulting</span>
+                        <h1 class="text-4xl md:text-5xl font-display font-bold mb-4 dark:text-white">Security Consulting</h1>
+                        <p class="text-2xl text-accent-gold font-bold mb-4">$4,500<span class="text-base font-normal text-gray-500 dark:text-gray-400">+ per audit</span></p>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6">Comprehensive security audits and crisis management planning.</p>
+                        <div class="border-t border-b border-gray-200 dark:border-gray-700 py-6 mb-6">
+                            <h3 class="font-bold text-xl mb-4 dark:text-white">Services</h3>
+                            <ul><li>Security Audits & Assessments</li><li>Crisis Management Planning</li><li>Physical Security Design</li><li>Emergency Response Plans</li><li>Security Policy Development</li></ul>
+                        </div>
+                        <a href="book.html" class="btn-gold flex-1 py-4 text-lg text-center block"><i class="fas fa-calendar-check mr-2"></i> Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 6. Legal Support Detail -->
+    <div id="detail-legal" class="service-detail-page">
+        <div class="container mx-auto px-6 py-10">
+            <div class="back-button" onclick="goBackToServices()"><i class="fas fa-arrow-left mr-2"></i> Back to All Services</div>
+            <div class="bg-white dark:bg-dark-card rounded-3xl shadow-xl overflow-hidden max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="relative h-96 md:h-full bg-gradient-to-br from-primary-navy to-secondary-charcoal flex items-center justify-center"><i class="fas fa-gavel text-8xl text-accent-gold opacity-50"></i></div>
+                    <div class="p-8 md:p-12">
+                        <span class="inline-block px-3 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-sm font-bold mb-4">Legal Support</span>
+                        <h1 class="text-4xl md:text-5xl font-display font-bold mb-4 dark:text-white">Legal Support Services</h1>
+                        <p class="text-2xl text-accent-gold font-bold mb-4">$1,500<span class="text-base font-normal text-gray-500 dark:text-gray-400">+ per case</span></p>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6">Assisting law firms with witness location, evidence gathering, and litigation support.</p>
+                        <div class="border-t border-b border-gray-200 dark:border-gray-700 py-6 mb-6">
+                            <h3 class="font-bold text-xl mb-4 dark:text-white">Services</h3>
+                            <ul><li>Witness Location & Interviews</li><li>Background Verification</li><li>Litigation Support</li><li>Court-Admissible Evidence</li><li>Expert Witness Services</li></ul>
+                        </div>
+                        <a href="book.html" class="btn-gold flex-1 py-4 text-lg text-center block"><i class="fas fa-calendar-check mr-2"></i> Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="py-16 bg-neutral-light dark:bg-dark-bg">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center"><i class="fas fa-user-secret text-primary-navy text-lg"></i></div>
+                        <div><span class="text-2xl font-display font-bold tracking-tight text-neutral-dark dark:text-white">SENTINEL</span></div>
+                    </div>
+                    <p class="mb-6 opacity-80 dark:opacity-70 text-center md:text-left">Elite private investigation and security consulting. Discretion, precision, and results.</p>
+                    <div class="flex space-x-4 justify-center md:justify-start"><a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon"><i class="fab fa-twitter"></i></a><a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon"><i class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Quick Links</h3><ul class="space-y-3"><li><a class='hover:text-accent-gold transition block' href='index.html'>Home</a></li><li><a class='hover:text-accent-gold transition block' href='about.html'>About</a></li><li><a class='hover:text-accent-gold transition block' href='service.html'>Services</a></li><li><a class='hover:text-accent-gold transition block' href='book.html'>Consult</a></li><li><a class='hover:text-accent-gold transition block' href='contact.html'>Contact</a></li></ul></div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Investigations</h3><ul class="space-y-3"><li><a href="#" class="hover:text-accent-gold transition block">Corporate Fraud</a></li><li><a href="#" class="hover:text-accent-gold transition block">Surveillance</a></li><li><a href="#" class="hover:text-accent-gold transition block">Digital Forensics</a></li><li><a href="#" class="hover:text-accent-gold transition block">Background Checks</a></li><li><a href="#" class="hover:text-accent-gold transition block">Asset Tracing</a></li></ul></div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Contact</h3><ul class="space-y-4"><li class="flex items-start justify-center md:justify-start"><i class="fas fa-map-marker-alt text-accent-gold mt-1 mr-3"></i><span>777 5th Ave, New York, NY</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-phone text-accent-gold mr-3"></i><span>+1 (212) 555-7890</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-envelope text-accent-gold mr-3"></i><span>contact@sentinel.com</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-clock text-accent-gold mr-3"></i><span>24/7 Emergency</span></li></ul></div>
+            </div>
+            <div class="mt-12 pt-8 border-t text-center border-neutral-light dark:border-gray-800"><p class="text-sm opacity-75 dark:opacity-70">&copy; 2026 SENTINEL. All rights reserved. <i class="fas fa-heart text-accent-gold mx-1"></i> Private Investigation & Security.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileThemeToggle = document.getElementById('theme-toggle-mobile');
+            function toggleTheme() {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                [themeToggle, mobileThemeToggle].forEach(btn => {
+                    if(btn) {
+                        const moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
+                        if(isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); btn.classList.add('active'); }
+                        else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); btn.classList.remove('active'); }
+                    }
+                });
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                [themeToggle, mobileThemeToggle].forEach(btn => { if(btn) { btn.querySelector('.fa-moon')?.classList.add('hidden'); btn.querySelector('.fa-sun')?.classList.remove('hidden'); btn.classList.add('active'); } });
+            }
+            
+            // RTL Toggle
+            const rtlToggle = document.getElementById('rtl-toggle'), mobileRtl = document.getElementById('rtl-toggle-mobile');
+            function toggleRTL() { document.documentElement.dir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl'; localStorage.setItem('dir', document.documentElement.dir); }
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            if (mobileRtl) mobileRtl.addEventListener('click', toggleRTL);
+            if (localStorage.getItem('dir') === 'rtl') document.documentElement.dir = 'rtl';
+            
+            // Mobile Menu
+            const mobileToggle = document.getElementById('mobile-toggle'), mobileMenu = document.getElementById('mobile-menu');
+            if(mobileToggle && mobileMenu){
+                mobileToggle.addEventListener('click',()=>{
+                    mobileMenu.classList.toggle('open');
+                    const icon = document.querySelector('#mobile-toggle i');
+                    if(mobileMenu.classList.contains('open')){ icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); document.body.style.overflow='hidden'; }
+                    else{ icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); document.body.style.overflow=''; document.querySelectorAll('.mobile-dropdown-content').forEach(c=>c.classList.remove('show')); }
+                });
+            }
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(btn=>{
+                btn.addEventListener('click',(e)=>{
+                    e.stopPropagation();
+                    const dropdown = btn.closest('.mobile-dropdown');
+                    const content = dropdown.querySelector('.mobile-dropdown-content');
+                    const icon = dropdown.querySelector('.fa-chevron-down');
+                    content.classList.toggle('show');
+                    icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    document.querySelectorAll('.mobile-dropdown-content').forEach(c=>{ if(c !== content) c.classList.remove('show'); });
+                });
+            });
+            
+            // Service Card Click Navigation - like farm reference
+            const mainPage = document.getElementById('services-main-page');
+            const detailPages = document.querySelectorAll('.service-detail-page');
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            window.showDetailPage = function(detailId) {
+                if (mainPage) mainPage.classList.add('hidden');
+                detailPages.forEach(page => page.classList.remove('active'));
+                const detailPage = document.getElementById(`detail-${detailId}`);
+                if (detailPage) {
+                    detailPage.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            };
+            
+            window.goBackToServices = function() {
+                if (mainPage) mainPage.classList.remove('hidden');
+                detailPages.forEach(page => page.classList.remove('active'));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+            
+            // Add click event to all service cards
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const detailId = this.getAttribute('data-detail');
+                    if (detailId) {
+                        showDetailPage(detailId);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Contact Sentinel | Private Investigation & Security</title>
+    <!-- Custom Favicon - Magnifying Glass & Shield -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231E2A36'/%3E%3Cpath fill='%23D4AF37' d='M50 25 L70 40 L70 60 L50 75 L30 60 L30 40 Z'/%3E%3Ccircle cx='50' cy='50' r='12' fill='none' stroke='%23D4AF37' stroke-width='3'/%3E%3Cpath fill='%23D4AF37' d='M60 58 L68 66 L65 69 L57 61 Z'/%3E%3C/svg%3E">
+    <meta name="description" content="Get in touch with Sentinel's elite private investigation team. Confidential consultations available 24/7 worldwide. Live interactive map.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#0A1928',
+                        'secondary-charcoal': '#1E2A36',
+                        'accent-gold': '#D4AF37',
+                        'accent-gold-dark': '#B4942C',
+                        'neutral-dark': '#0F1A24',
+                        'neutral-light': '#F5F7FA',
+                        'dark-bg': '#0A0F15',
+                        'dark-card': '#16212B'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Lexend', 'Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.4s ease-out',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    },
+                    backgroundImage: {
+                        'security-pattern': "radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%)",
+                        'hero-overlay': "linear-gradient(105deg, rgba(10,25,40,0.94) 0%, rgba(15,26,36,0.88) 100%)",
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom Styles matching reference */
+        body {
+            background-color: #F5F7FA;
+            color: #1E2A36;
+            scroll-behavior: smooth;
+        }
+        
+        .dark body {
+            background-color: #0A0F15;
+            color: #E5E7EB;
+        }
+        
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #E5E7EB;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        
+        /* Card Styles */
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark .service-card {
+            background: #16212B;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        
+        /* Gold Button */
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #B4942C 100%);
+            color: #0A1928;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+        }
+        
+        .btn-outline-gold {
+            border: 1.5px solid #D4AF37;
+            color: #D4AF37;
+            background: transparent;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .btn-outline-gold:hover {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        
+        /* Navigation styles */
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #E5E7EB;
+        }
+        
+        .dark .dropdown-menu {
+            background: #16212B;
+            border-color: #2D3A46;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: #1E2A36;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .dark .dropdown-item {
+            color: #E5E7EB;
+        }
+        
+        .dropdown-item:hover {
+            background: #F3F4F6;
+            color: #D4AF37;
+            padding-left: 1.75rem;
+        }
+        
+        .dark .dropdown-item:hover {
+            background: #2D3A46;
+            color: #D4AF37;
+        }
+        
+        /* Auth Buttons */
+        .auth-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        
+        .auth-btn.login {
+            background: transparent;
+            border-color: #D1D5DB;
+            color: #1E2A36;
+        }
+        
+        .dark .auth-btn.login {
+            border-color: #4B5563;
+            color: #D1D5DB;
+        }
+        
+        .auth-btn.login:hover {
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+        
+        .auth-btn.signup {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        
+        .auth-btn.signup:hover {
+            background: #B4942C;
+            transform: translateY(-2px);
+        }
+        
+        /* Toggle Buttons */
+        .toggle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F3F4F6;
+            color: #6B7280;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dark .toggle-btn {
+            background: #2D3A46;
+            color: #9CA3AF;
+        }
+        
+        .toggle-btn:hover {
+            background: #E5E7EB;
+            color: #D4AF37;
+        }
+        
+        .dark .toggle-btn:hover {
+            background: #3B4A58;
+            color: #D4AF37;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            background: white;
+            border-top: 1px solid #E5E5E5;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .dark .mobile-menu {
+            background: #0A0F15;
+            border-color: #2D3A46;
+        }
+        
+        .mobile-menu.open {
+            max-height: 85vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        
+        .mobile-menu.open::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .mobile-menu-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            color: #1E2A36;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        
+        .dark .mobile-menu-item {
+            color: #D1D5DB;
+            border-bottom-color: #2D3A46;
+        }
+        
+        .mobile-menu-item:hover {
+            background-color: #F9FAFB;
+            color: #D4AF37;
+        }
+        
+        .mobile-auth-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            border-radius: 8px;
+            text-align: center;
+            margin: 0.25rem;
+        }
+        
+        .mobile-auth-btn.login {
+            background: transparent;
+            border: 1px solid #D1D5DB;
+            color: #1E2A36;
+        }
+        
+        .dark .mobile-auth-btn.login {
+            border-color: #4B5563;
+            color: #D1D5DB;
+        }
+        
+        .mobile-auth-btn.signup {
+            background: #D4AF37;
+            color: #0A1928;
+        }
+        
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .mobile-dropdown-content.show {
+            max-height: 300px;
+        }
+        
+        .mobile-dropdown-item {
+            display: block;
+            padding: 0.75rem 2.5rem;
+            font-size: 0.95rem;
+            color: #6B7280;
+        }
+        
+        /* Contact Page specific */
+        .contact-card {
+            background: white;
+            border-radius: 28px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .dark .contact-card {
+            background: #16212B;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+        
+        .form-input, .form-textarea, .form-select {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 0.875rem 1.25rem;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+        
+        .dark .form-input, .dark .form-textarea, .dark .form-select {
+            background: #0F1A24;
+            border-color: #2D3A46;
+            color: #F3F4F6;
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        
+        .info-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(212, 175, 55, 0.12);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Full width map container */
+        .map-fullwidth {
+            width: 100%;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .map-fullwidth iframe {
+            width: 100%;
+            height: 420px;
+            display: block;
+            border: none;
+        }
+        
+        /* Desktop nav spacing */
+        .desktop-nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav-spacing {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .dashboard-dropdown {
+            position: relative;
+        }
+        .dashboard-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #E5E7EB;
+        }
+        .dark .dashboard-dropdown-menu {
+            background: #16212B;
+            border-color: #2D3A46;
+        }
+        .dashboard-dropdown:hover .dashboard-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #F3F4F6;
+            color: #1E2A36;
+            transition: all 0.3s ease;
+        }
+        .dark .social-icon {
+            background: #2D3A46;
+            color: #E5E7EB;
+        }
+        .social-icon:hover {
+            background: #D4AF37;
+            color: white;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="security-pattern">
+
+    <!-- Fixed Navigation - Exact match reference header -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-md border-b border-neutral-light dark:border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <a class='flex items-center space-x-3 group' href='index.html'>
+                    <div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+                        <i class="fas fa-user-secret text-primary-navy text-lg"></i>
+                    </div>
+                    <div><span class="text-2xl font-display font-bold tracking-tight text-neutral-dark dark:text-white">SENTINEL</span></div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden xl:flex items-center">
+                    <div class="desktop-nav-container">
+                        <div class="nav-spacing">
+                            <div class="dropdown">
+                                <button class="nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition flex items-center">Home <i class="fas fa-chevron-down ml-2 text-xs"></i></button>
+                                <div class="dropdown-menu">
+                                    <a class='dropdown-item' href='index.html'><i class="fas fa-home"></i> Home 1</a>
+                                    <a href="home2.html" class="dropdown-item"><i class="fas fa-home"></i> Home 2</a>
+                                </div>
+                            </div>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='about.html'>About</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='service.html'>Services</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='consult.html'>Consult</a>
+                            <a class='nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition' href='cases.html'>Cases</a>
+                            <a class='nav-item font-medium text-accent-gold transition' href='contact.html' style="color:#D4AF37; font-weight:600;">Contact</a>
+                            <div class="dashboard-dropdown">
+                                <button class="nav-item font-medium text-neutral-dark dark:text-gray-300 hover:text-accent-gold transition flex items-center">Dashboard <i class="fas fa-chevron-down ml-2 text-xs"></i></button>
+                                <div class="dashboard-dropdown-menu">
+                                    <a class='dropdown-item' href='admin.html'><i class="fas fa-user-shield"></i> Admin</a>
+                                    <a class='dropdown-item' href='client.html'><i class="fas fa-user"></i> Client</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <a class='auth-btn login' href='login.html'>Login</a>
+                            <a class='auth-btn signup' href='signup.html'>Sign Up</a>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 ml-4">
+                        <button id="theme-toggle" class="toggle-btn" title="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                        <button id="rtl-toggle" class="toggle-btn" title="Toggle RTL/LTR">⇄</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-toggle" class="xl:hidden text-neutral-dark dark:text-gray-300 p-2"><i class="fas fa-bars text-xl"></i></button>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu xl:hidden">
+                <div class="mobile-dropdown"><button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item"><span>Home</span><i class="fas fa-chevron-down text-xs"></i></button>
+                <div class="mobile-dropdown-content"><a class='mobile-dropdown-item' href='index.html'>Home 1</a><a href="home2.html" class="mobile-dropdown-item">Home 2</a></div></div>
+                <a class='mobile-menu-item' href='about.html'>About</a>
+                <a class='mobile-menu-item' href='service.html'>Services</a>
+                <a class='mobile-menu-item' href='consult.html'>Consult</a>
+                <a class='mobile-menu-item' href='cases.html'>Cases</a>
+                <a class='mobile-menu-item' href='contact.html' style="color:#D4AF37;">Contact</a>
+                <div class="mobile-dropdown"><button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item"><span>Dashboard</span><i class="fas fa-chevron-down text-xs"></i></button>
+                <div class="mobile-dropdown-content"><a class='mobile-dropdown-item' href='admin.html'>Admin</a><a class='mobile-dropdown-item' href='client.html'>Client</a></div></div>
+                <div class="flex flex-col sm:flex-row gap-3 p-6"><a class='mobile-auth-btn login flex-1 text-center' href='login.html'>Login</a><a class='mobile-auth-btn signup flex-1 text-center' href='signup.html'>Sign Up</a></div>
+                <div class="flex justify-center gap-3 p-6 border-t border-gray-200 dark:border-gray-800">
+                    <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                    <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION: FULL WIDTH (inc width) with overlay and extended container -->
+    <section class="relative w-full bg-primary-navy overflow-hidden">
+        <!-- Background image full bleed -->
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="City skyline surveillance" class="w-full h-full object-cover opacity-40">
+        </div>
+        <div class="absolute inset-0 bg-hero-overlay"></div>
+        <div class="relative z-10 w-full py-28 md:py-36 px-6">
+            <div class="max-w-7xl mx-auto text-center animate-slide-up">
+                <div class="inline-flex items-center px-5 py-2.5 bg-accent-gold/20 backdrop-blur-sm rounded-full mb-6 border border-accent-gold/30">
+                    <i class="fas fa-shield-alt mr-2 text-accent-gold"></i>
+                    <span class="font-medium tracking-wide">24/7 CONFIDENTIAL ACCESS</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-display font-extrabold text-white mb-6 leading-tight tracking-tight">
+                    Contact <span class="text-accent-gold">Sentinel</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto font-light leading-relaxed">
+                    Elite investigators ready to assist — global reach, absolute discretion.
+                </p>
+                <div class="flex flex-wrap justify-center gap-5 mt-10">
+                    <a href="#contact-form-start" class="btn-gold px-9 py-4 rounded-full text-lg font-semibold inline-flex items-center gap-3 shadow-xl"><i class="fas fa-paper-plane"></i> Secure Message</a>
+                    <a href="tel:+12125557890" class="btn-outline-gold px-9 py-4 rounded-full text-lg font-semibold inline-flex items-center gap-3"><i class="fas fa-phone-alt"></i> Emergency Hotline</a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mt-16 max-w-4xl mx-auto">
+                    <div class="backdrop-blur-sm bg-black/20 rounded-2xl p-4 border border-white/20"><div class="text-2xl font-bold text-accent-gold">97%</div><div class="text-sm uppercase tracking-wider text-white">Success Rate</div></div>
+                    <div class="backdrop-blur-sm bg-black/20 rounded-2xl p-4 border border-white/20"><div class="text-2xl font-bold text-accent-gold">15+</div><div class="text-sm uppercase tracking-wider text-white">Years Exp.</div></div>
+                    <div class="backdrop-blur-sm bg-black/20 rounded-2xl p-4 border border-white/20"><div class="text-2xl font-bold text-accent-gold">24/7</div><div class="text-sm uppercase tracking-wider text-white">Response</div></div>
+                    <div class="backdrop-blur-sm bg-black/20 rounded-2xl p-4 border border-white/20"><div class="text-2xl font-bold text-accent-gold">100%</div><div class="text-sm uppercase tracking-wider text-white">Confidential</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Main Section: Form + Info + FULL WIDTH IFRAME MAP -->
+    <section class="py-20 bg-neutral-light dark:bg-dark-bg">
+        <div class="container mx-auto px-6">
+            <!-- Two column layout: contact info & form -->
+            <div class="grid lg:grid-cols-3 gap-10 mb-16">
+                <!-- Contact Info Cards -->
+                <div class="lg:col-span-1 space-y-6">
+                    <div class="contact-card p-6">
+                        <div class="info-icon mb-5"><i class="fas fa-map-marker-alt text-accent-gold text-2xl"></i></div>
+                        <h3 class="text-xl font-bold dark:text-white mb-2">Global HQ</h3>
+                        <p class="text-gray-600 dark:text-gray-400">777 5th Avenue, 24th Floor<br>New York, NY 10111<br>United States</p>
+                    </div>
+                    <div class="contact-card p-6">
+                        <div class="info-icon mb-5"><i class="fas fa-phone-alt text-accent-gold text-2xl"></i></div>
+                        <h3 class="text-xl font-bold dark:text-white mb-2">Emergency Hotline</h3>
+                        <p class="text-gray-600 dark:text-gray-400">+1 (212) 555-7890<br><span class="text-accent-gold text-sm">Available 24/7/365</span></p>
+                    </div>
+                    <div class="contact-card p-6">
+                        <div class="info-icon mb-5"><i class="fas fa-envelope text-accent-gold text-2xl"></i></div>
+                        <h3 class="text-xl font-bold dark:text-white mb-2">Secure Email</h3>
+                        <p class="text-gray-600 dark:text-gray-400">contact@sentinel.com<br>forensics@sentinel.com</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form (with id for anchor) -->
+                <div class="lg:col-span-2" id="contact-form-start">
+                    <div class="contact-card p-8 md:p-10">
+                        <div class="mb-8"><h2 class="text-2xl md:text-3xl font-display font-bold dark:text-white">Confidential Consultation</h2><p class="text-gray-500 dark:text-gray-400 mt-2">Your information is protected with 256-bit encryption.</p></div>
+                        <form id="contactForm" action="#" method="POST">
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><label class="block text-sm font-medium mb-2 dark:text-gray-300">Full Name *</label><input type="text" class="form-input" placeholder="Johnathan Doe" required></div>
+                                <div><label class="block text-sm font-medium mb-2 dark:text-gray-300">Email Address *</label><input type="email" class="form-input" placeholder="john@company.com" required></div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><label class="block text-sm font-medium mb-2 dark:text-gray-300">Phone Number</label><input type="tel" class="form-input" placeholder="+1 (212) 555-1234"></div>
+                                <div><label class="block text-sm font-medium mb-2 dark:text-gray-300">Subject *</label><select class="form-select" required><option>Corporate Investigation</option><option>Surveillance Services</option><option>Executive Protection</option><option>Digital Forensics</option><option>Security Consulting</option><option>Legal Support</option></select></div>
+                            </div>
+                            <div class="mb-6"><label class="block text-sm font-medium mb-2 dark:text-gray-300">Case Details / Message *</label><textarea rows="5" class="form-textarea" placeholder="All details are strictly confidential. A senior investigator will respond within 24h." required></textarea></div>
+                            <div class="flex items-start mb-8"><input type="checkbox" class="mt-1 mr-3 w-5 h-5 rounded border-gray-300 text-accent-gold focus:ring-accent-gold" required><label class="text-sm text-gray-600 dark:text-gray-400">I confirm this is a confidential inquiry and consent to being contacted.</label></div>
+                            <button type="submit" class="btn-gold px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2"><i class="fas fa-lock"></i> Send Encrypted Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FULL WIDTH IFRAME MAP SECTION (spans entire container width, modern interactive map) -->
+            <div class="mt-8 w-full">
+                <div class="flex flex-wrap justify-between items-end mb-6">
+                    <div><h3 class="text-2xl font-display font-bold dark:text-white">📍 Global Command Center</h3><p class="text-gray-500 dark:text-gray-400">Interactive map — main operations & regional hubs</p></div>
+                    <a href="#" class="text-accent-gold hover:underline text-sm font-medium"><i class="fas fa-expand-alt mr-1"></i> Fullscreen view</a>
+                </div>
+                <div class="map-fullwidth">
+                    <!-- Interactive Google Maps iframe (showing Manhattan NY / Sentinel HQ context, fully responsive) -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1x3022.9663095343008!2d-73.980750784594!3d40.75897997932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sFifth%20Avenue%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1712150000000!5m2!1sen!2sus" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Sentinel Global Headquarters Map">
+                    </iframe>
+                </div>
+                <div class="flex flex-wrap gap-6 justify-between items-center mt-5 text-sm text-gray-500 dark:text-gray-400">
+                    <div><i class="fas fa-location-dot text-accent-gold mr-2"></i> 777 5th Ave, NYC — 24th Floor (Private Security Wing)</div>
+                    <div><i class="fas fa-globe text-accent-gold mr-2"></i> Regional offices: London | Dubai | Hong Kong | São Paulo</div>
+                </div>
+            </div>
+
+            <!-- Additional contact CTA / Trust Badges -->
+            <div class="mt-16 grid md:grid-cols-3 gap-6 text-center">
+                <div class="bg-white/50 dark:bg-dark-card/60 p-6 rounded-2xl backdrop-blur-sm border border-accent-gold/10"><i class="fas fa-fingerprint text-accent-gold text-3xl mb-3"></i><p class="font-semibold">Biometric Security Clearance</p><p class="text-xs opacity-70">On-site verification protocols</p></div>
+                <div class="bg-white/50 dark:bg-dark-card/60 p-6 rounded-2xl backdrop-blur-sm border border-accent-gold/10"><i class="fas fa-handcuffs text-accent-gold text-3xl mb-3"></i><p class="font-semibold">Licensed & Bonded</p><p class="text-xs opacity-70">NY, DC, CA, international affiliates</p></div>
+                <div class="bg-white/50 dark:bg-dark-card/60 p-6 rounded-2xl backdrop-blur-sm border border-accent-gold/10"><i class="fas fa-clock text-accent-gold text-3xl mb-3"></i><p class="font-semibold">Rapid Deployment</p><p class="text-xs opacity-70">Response within 60min in major cities</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - exact match reference -->
+    <footer class="py-16 bg-neutral-light dark:bg-dark-bg">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="text-center md:text-left"><div class="flex items-center justify-center md:justify-start space-x-3 mb-6"><div class="w-10 h-10 bg-accent-gold rounded-lg flex items-center justify-center"><i class="fas fa-user-secret text-primary-navy text-lg"></i></div><div><span class="text-2xl font-display font-bold tracking-tight text-neutral-dark dark:text-white">SENTINEL</span></div></div><p class="mb-6 opacity-80">Elite private investigation and security consulting. Discretion, precision, and results.</p><div class="flex space-x-4 justify-center md:justify-start"><a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon"><i class="fab fa-twitter"></i></a><a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon"><i class="fab fa-instagram"></i></a></div></div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Quick Links</h3><ul class="space-y-3"><li><a class='hover:text-accent-gold transition block' href='index.html'>Home</a></li><li><a class='hover:text-accent-gold transition block' href='about.html'>About</a></li><li><a class='hover:text-accent-gold transition block' href='service.html'>Services</a></li><li><a class='hover:text-accent-gold transition block' href='consult.html'>Consult</a></li><li><a class='hover:text-accent-gold transition block' href='contact.html'>Contact</a></li></ul></div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Investigations</h3><ul class="space-y-3"><li><a href="#" class="hover:text-accent-gold transition block">Corporate Fraud</a></li><li><a href="#" class="hover:text-accent-gold transition block">Surveillance</a></li><li><a href="#" class="hover:text-accent-gold transition block">Digital Forensics</a></li><li><a href="#" class="hover:text-accent-gold transition block">Background Checks</a></li><li><a href="#" class="hover:text-accent-gold transition block">Asset Tracing</a></li></ul></div>
+                <div class="text-center md:text-left"><h3 class="text-neutral-dark dark:text-white text-xl font-bold mb-6">Contact</h3><ul class="space-y-4"><li class="flex items-start justify-center md:justify-start"><i class="fas fa-map-marker-alt text-accent-gold mt-1 mr-3"></i><span>777 5th Ave, New York, NY</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-phone text-accent-gold mr-3"></i><span>+1 (212) 555-7890</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-envelope text-accent-gold mr-3"></i><span>contact@sentinel.com</span></li><li class="flex items-center justify-center md:justify-start"><i class="fas fa-clock text-accent-gold mr-3"></i><span>24/7 Emergency</span></li></ul></div>
+            </div>
+            <div class="mt-12 pt-8 border-t text-center border-neutral-light dark:border-gray-800"><p class="text-sm opacity-75">&copy; 2026 SENTINEL. All rights reserved. <i class="fas fa-heart text-accent-gold mx-1"></i> Private Investigation & Security.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileThemeToggle = document.getElementById('theme-toggle-mobile');
+            function toggleTheme() {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                [themeToggle, mobileThemeToggle].forEach(btn => {
+                    if(btn) { const moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
+                    if(isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); btn.classList.add('active'); }
+                    else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); btn.classList.remove('active'); } }
+                });
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if(mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+            if(localStorage.getItem('theme') === 'dark') { document.documentElement.classList.add('dark'); [themeToggle, mobileThemeToggle].forEach(btn => { if(btn) { btn.querySelector('.fa-moon')?.classList.add('hidden'); btn.querySelector('.fa-sun')?.classList.remove('hidden'); btn.classList.add('active'); } }); }
+            const rtlToggle = document.getElementById('rtl-toggle'), mobileRtlToggle = document.getElementById('rtl-toggle-mobile');
+            function toggleRTL() { document.documentElement.dir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl'; localStorage.setItem('dir', document.documentElement.dir); }
+            if(rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            if(mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+            if(localStorage.getItem('dir') === 'rtl') document.documentElement.dir = 'rtl';
+            const mobileToggle = document.getElementById('mobile-toggle'), mobileMenu = document.getElementById('mobile-menu');
+            if(mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', () => { mobileMenu.classList.toggle('open'); const icon = document.querySelector('#mobile-toggle i'); if(mobileMenu.classList.contains('open')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); document.body.style.overflow = 'hidden'; } else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); document.body.style.overflow = ''; document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('show')); } });
+            }
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => { e.stopPropagation(); const dropdown = btn.closest('.mobile-dropdown'), content = dropdown.querySelector('.mobile-dropdown-content'), icon = dropdown.querySelector('.fa-chevron-down'); content.classList.toggle('show'); icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)'; });
+            });
+        });
+    </script>
+</body>
+</html>
