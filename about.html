@@ -23,8 +23,8 @@
                         'accent-gold-dark': '#B4942C',
                         'neutral-dark': '#0F1A24',
                         'neutral-light': '#F5F7FA',
-                        'dark-bg': '#0A0F15',
-                        'dark-card': '#16212B'
+                        'dark-bg': '#000000',
+                        'dark-card': '#1A1A1A'
                     },
                     fontFamily: {
                         'sans': ['Inter', 'system-ui', 'sans-serif'],
@@ -76,7 +76,7 @@
         }
         
         .dark body {
-            background-color: #0A0F15;
+            background-color: #000000;
             color: #E5E7EB;
         }
         
@@ -135,7 +135,7 @@
         }
         
         .dark .dropdown-menu {
-            background: #16212B;
+            background: #1A1A1A;
             border-color: #2D3A46;
         }
         
@@ -244,7 +244,7 @@
         }
         
         .dark .mobile-menu {
-            background: #0A0F15;
+            background: #000000;
             border-color: #2D3A46;
         }
         
@@ -385,7 +385,7 @@
         }
         
         .dark .dashboard-dropdown-menu {
-            background: #16212B;
+            background: #1A1A1A;
             border-color: #2D3A46;
         }
         
@@ -420,7 +420,7 @@
         }
         
         .dark .about-hero {
-            background: linear-gradient(135deg, #0A0F15 0%, #16212B 100%), url('/assest/sec.jpg');
+            background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%), url('/assest/sec.jpg');
             background-blend-mode: overlay;
             background-size: cover;
         }
@@ -433,7 +433,7 @@
         }
         
         .dark .value-card {
-            background: #16212B;
+            background: #1A1A1A;
             border-color: rgba(212, 175, 55, 0.2);
         }
         
@@ -478,7 +478,7 @@
         }
         
         .dark .team-card {
-            background: #16212B;
+            background: #1A1A1A;
         }
         
         .team-card:hover {
@@ -613,6 +613,7 @@
         </div>
     </section>
 
+    <!-- Alternative with stronger dark mode image adjustments -->
     <!-- Mission & Vision Section - Split Layout -->
     <section class="py-24 bg-white dark:bg-dark-card">
         <div class="container mx-auto px-6">
@@ -630,8 +631,8 @@
                 </div>
                 <div class="animate-scale-in">
                     <div class="relative">
-                        <div class="absolute -inset-4 bg-accent-gold/20 blur-2xl rounded-3xl"></div>
-                        <img src="/assest/sec2.jpg" alt="Mission" class="relative rounded-2xl shadow-2xl w-full object-cover">
+                        <div class="absolute -inset-4 bg-accent-gold/20 blur-2xl rounded-3xl dark:bg-accent-gold/5"></div>
+                        <img src="/assest/sec2.jpg" alt="Mission" class="relative rounded-2xl shadow-2xl w-full object-cover brightness-100 dark:brightness-75 dark:contrast-125 dark:saturate-90">
                     </div>
                 </div>
             </div>
